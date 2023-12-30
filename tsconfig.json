@@ -19,7 +19,7 @@
     "noUnusedParameters": true,
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "strictNullChecks": false
+    "strictNullChecks": false,
   },
   "include": [
     "src/**/*"
@@ -27,5 +27,5 @@
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
-  ]
+  ],
 }
