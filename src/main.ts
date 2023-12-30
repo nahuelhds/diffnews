@@ -7,6 +7,7 @@ type Feed = {
   url: string;
 }
 
+console.log(process.env.DATABASE_URL);
 feeds.forEach((feed: Feed) => {
   console.log(feed.name);
   console.log(feed.skip_pattern);
