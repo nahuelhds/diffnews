@@ -1,0 +1,42 @@
+{
+  "db": "${DATABASE_URL}",
+  "feeds": [
+    {
+      "name": "la diaria",
+      "skip_pattern": "accede a \\d+ articulos gratis por mes con la suscripcion gratuita",
+      "url": "https://ladiaria.com.uy/feeds/articulos/"
+    },
+    {
+      "name": "El Observador",
+      "url": "https://www.elobservador.com.uy/rss/elobservador.xml"
+    },
+    {
+      "name": "El País UY",
+      "url": "https://www.elpais.com.uy/rss/"
+    },
+    {
+      "name": "Brecha",
+      "url": "http://brecha.com.uy/feed/"
+    },
+    {
+      "name": "Montevideo Portal",
+      "url": "https://www.montevideo.com.uy/anxml.aspx?58"
+    }
+  ],
+  "lang": {
+    "and": "y",
+    "change_in": "Cambio en",
+    "the_summary": "la bajada",
+    "the_title": "el título",
+    "the_url": "la URL"
+  },
+  "logger": {
+    "file": false,
+    "console": true
+  },
+  "time_sleep": 0,
+  "verbose": false,
+  "webdriver": {
+    "engine": "chromedriver"
+  }
+}

@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
     "target": "es2022",
-    "module": "node16",
+    "module": "NodeNext",
     "lib": [
       "ES2022"
     ],
     "moduleResolution": "node16",
-    "rootDir": ".",
+    "rootDir": "./src",
     "outDir": "build",
     "allowSyntheticDefaultImports": true,
     "importHelpers": true,
@@ -20,6 +20,7 @@
     "noImplicitAny": false,
     "noImplicitThis": false,
     "strictNullChecks": false,
+    "resolveJsonModule": true
   },
   "include": [
     "src/**/*"
@@ -27,5 +28,5 @@
   "exclude": [
     "src/**/*.spec.ts",
     "src/**/*.test.ts"
-  ],
+  ]
 }
