@@ -1,6 +1,14 @@
-import config from "./config.json" assert { type: "json" };
+import "dotenv/config";
+import feeds from "./config/feeds.json" assert { type: "json" };
 
-// Get document, or throw exception on error
-console.log(config);
+type Feed = {
+  name: string;
+  skip_pattern: string;
+  url: string;
+}
 
-console.warn("esa");
+feeds.forEach((feed: Feed) => {
+  console.log(feed.name);
+  console.log(feed.skip_pattern);
+  console.log(feed.url);
+});
