@@ -1,4 +1,6 @@
-name: Update "El Pais UY" RSS feed
+name: Update RSS test
+
+on: workflow_dispatch
 
 jobs:
   fetch-rss:
@@ -18,7 +20,7 @@ jobs:
       - name: Commit and push changes to repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Update "El Pais UY" RSS feed'
+          commit_message: 'Update RSS test'
           branch: feed/el-pais
           create_branch: true
           file_pattern: './archive/el-pais-uy.json'
