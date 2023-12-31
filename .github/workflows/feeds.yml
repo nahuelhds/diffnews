@@ -14,13 +14,13 @@ jobs:
         uses: Promptly-Technologies-LLC/rss-fetch-action@v2
         with:
           feed_url: 'https://www.elpais.com.uy/rss/'
-          file_path: './archive/el-pais-uy.json'
+          file_path: './static/test-feed.json'
           remove_published: true
 
       - name: Commit and push changes to repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Update RSS test'
-          branch: feed/el-pais
-          create_branch: true
-          file_pattern: './archive/el-pais-uy.json'
+          file_pattern: './static/test-feed.json'
+          branch: main
+#          create_branch: true
