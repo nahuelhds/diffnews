@@ -18,6 +18,7 @@ jobs:
         with:
           feed_url: 'https://www.elpais.com.uy/rss/'
           file_path: './archive/el-pais-uy.json'
+          remove_published: true
 
       - name: Commit and push changes to repository
         uses: stefanzweifel/git-auto-commit-action@v4
