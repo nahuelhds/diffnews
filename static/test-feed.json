@@ -7,6 +7,20 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/informacion/servicios/grande-ganador-metodo-cajera-numeros-cumpleanos-gordo-premio",
+      "title": "Ganador de La Grande le pidió a la cajera que eligiera los números ellas y la mujer se basó en su cumpleaños",
+      "link": "https://www.elpais.com.uy/informacion/servicios/grande-ganador-metodo-cajera-numeros-cumpleanos-gordo-premio",
+      "published": "2023-12-31T16:24:09.000Z",
+      "description": "El ganador del antes conocido como Gordo de Fin de Año se llevó unos US$ 4.000.000. El número salió en un local del supermercado Devoto, donde está la agencia 204 Mautone."
+    },
+    {
+      "id": "https://rurales.elpais.com.uy/ganaderia/el-mejor-toro-del-mundo-sera-uruguayo",
+      "title": "El mejor toro del mundo será uruguayo",
+      "link": "https://rurales.elpais.com.uy/ganaderia/el-mejor-toro-del-mundo-sera-uruguayo",
+      "published": "2023-12-31T16:22:17.000Z",
+      "description": "Se definirá entre el Gran Campeón Angus de El Puesto de Irazábal y el Gran Campeón Polled Hereford de Las Anitas de Alfonso. El resultado estará mañana primero de enero."
+    },
+    {
       "id": "https://www.elpais.com.uy/ovacion/futbol/nos-sigue-llenando-de-orgullo-luis-suarez-ya-no-esta-en-gremio-pero-el-tricolor-gaucho-lo-sigue-elogiando",
       "title": "\"Nos sigue llenando de orgullo\": Luis Suárez ya no está en Gremio, pero el tricolor gaúcho lo sigue elogiando",
       "link": "https://www.elpais.com.uy/ovacion/futbol/nos-sigue-llenando-de-orgullo-luis-suarez-ya-no-esta-en-gremio-pero-el-tricolor-gaucho-lo-sigue-elogiando",
@@ -131,20 +145,6 @@
       "link": "https://rurales.elpais.com.uy/historias/el-veterinario-que-termino-siendo-cura",
       "published": "2023-12-31T07:00:00.000Z",
       "description": "A sus 34 años Juan Andrés “Gordo”  Verde tiene una historia larga, pero que vale la pena conocer"
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/opinion/la-mesa-de-los-uruguayos",
-      "title": "La mesa de los uruguayos",
-      "link": "https://rurales.elpais.com.uy/opinion/la-mesa-de-los-uruguayos",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Uruguay produce alimentos para una población más de 15 veces superior a la propia, exportando diversos alimentos a múltiples destinos. Lo ha logrado manteniendo una estrategia de largo plazo"
-    },
-    {
-      "id": "https://www.elpais.com.uy/que-pasa/la-ultima-locura-del-pato-celeste-torena-quiere-ser-diputado-atiende-un-almacen-y-busca-recuperar-su-mansion",
-      "title": "La última locura del Pato Celeste: Torena quiere ser diputado, atiende un almacén y busca recuperar su mansión",
-      "link": "https://www.elpais.com.uy/que-pasa/la-ultima-locura-del-pato-celeste-torena-quiere-ser-diputado-atiende-un-almacen-y-busca-recuperar-su-mansion",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Gustavo Torena volvió a la política acompañado de un plantel de estrellas de la música tropical. A la vez que recorre asentamientos, atiende un almacén e intenta recuperar su polémica mansión."
     }
   ]
 }
