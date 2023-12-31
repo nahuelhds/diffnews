@@ -7,6 +7,20 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/bienestar/nutricion/la-superfruta-que-disminuye-el-colesterol-malo-alivia-el-dolor-muscular-y-tiene-propiedades-antienvejecimiento",
+      "title": "La superfruta que disminuye el colesterol malo, alivia el dolor muscular y tiene propiedades antienvejecimiento",
+      "link": "https://www.elpais.com.uy/bienestar/nutricion/la-superfruta-que-disminuye-el-colesterol-malo-alivia-el-dolor-muscular-y-tiene-propiedades-antienvejecimiento",
+      "published": "2023-12-31T18:04:48.000Z",
+      "description": "Esta fruta, de origen asiático y de tamaño pequeño, pero con grandes propiedades para la salud también cuenta con nutrientes esenciales para el correcto funcionamiento del organismo."
+    },
+    {
+      "id": "https://www.elpais.com.uy/ovacion/futbol/a-los-81-fallecio-raul-tavani-el-creador-de-la-encuesta-america-le-responde-a-el-pais",
+      "title": "A los 81 años, falleció Raúl Tavani, el creador de la encuesta América le responde a El País",
+      "link": "https://www.elpais.com.uy/ovacion/futbol/a-los-81-fallecio-raul-tavani-el-creador-de-la-encuesta-america-le-responde-a-el-pais",
+      "published": "2023-12-31T18:03:27.000Z",
+      "description": "Tuvo una larga trayectoria como periodista en el Diario El País y durante casi un centenar de años formó parte del Círculo de Periodistas Deportivos."
+    },
+    {
       "id": "https://www.elpais.com.uy/mundo/argentina/un-andinista-fallecio-en-el-aconcagua-mendoza-un-estadounidense-hizo-cumbre-y-comenzo-a-sentirse-mal",
       "title": "Un andinista falleció en el Aconcagua, Mendoza: un estadounidense hizo cumbre y comenzó a sentirse mal",
       "link": "https://www.elpais.com.uy/mundo/argentina/un-andinista-fallecio-en-el-aconcagua-mendoza-un-estadounidense-hizo-cumbre-y-comenzo-a-sentirse-mal",
@@ -131,20 +145,6 @@
       "link": "https://www.elpais.com.uy/ovacion/futbol/del-estaba-cantado-al-logro-inedito-de-german-cano-al-ser-rey-de-america-que-dijo-la-prensa-del-continente",
       "published": "2023-12-31T12:59:32.000Z",
       "description": "Los medios internacionales se hicieron eco de la consagración del argentino en la encuesta América le responde a El País."
-    },
-    {
-      "id": "https://www.elpais.com.uy/mundo/argentina/javier-milei-mensaje-fin-ano-ley-omnibus-congreso-catastrofe",
-      "title": "Javier Milei dio un mensaje de fin de año y presionó al Congreso aprobar la ley ómnibus y evitar una “catástrofe”",
-      "link": "https://www.elpais.com.uy/mundo/argentina/javier-milei-mensaje-fin-ano-ley-omnibus-congreso-catastrofe",
-      "published": "2023-12-31T12:12:00.000Z",
-      "description": "El presidente argentino volvió a hablar sobre la herencia recibida y las medidas económicas que debió tomar el Gobierno; además le exigió al Poder Legislativo apoyar los proyectos de ley y el DNU."
-    },
-    {
-      "id": "https://www.elpais.com.uy/bienestar/mente/la-que-me-espera-en-el-trabajo-pensamientos-intrusivos-que-nos-arruinan-las-vacaciones",
-      "title": "La que me espera en el trabajo: pensamientos intrusivos que nos arruinan las vacaciones",
-      "link": "https://www.elpais.com.uy/bienestar/mente/la-que-me-espera-en-el-trabajo-pensamientos-intrusivos-que-nos-arruinan-las-vacaciones",
-      "published": "2023-12-31T11:00:00.000Z",
-      "description": "Qué es la ansiedad anticipatoria y cómo disfrutar las vacaciones al máximo sin pensar en el trabajo mientras estamos descansando."
     }
   ]
 }
