@@ -3,7 +3,7 @@ name: Update RSS test
 on:
   workflow_dispatch:
   schedule:
-      - cron: '*/15 * * * *'
+      - cron: '2,17,32,47 * * * *'
 env:
   branch: feeds
   feed_file_path: './static/test-feed.json'
