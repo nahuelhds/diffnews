@@ -1,6 +1,9 @@
 name: Update RSS test
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+  schedule:
+      - cron: "* 0 * * *"
 
 jobs:
   fetch-rss:
@@ -25,8 +28,8 @@ jobs:
         with:
           commit_message: 'Update RSS test'
           file_pattern: './static/test-feed.json'
-          branch: main
-      #          create_branch: true
+          create_branch: true
+          branch: feeds
 
       - name: "Feed has not changed"
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
