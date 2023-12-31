@@ -20,6 +20,7 @@ jobs:
           file_path: './static/test-feed.json'
 
       - name: Commit and push changes to repository
+        id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update RSS test'
@@ -27,9 +28,17 @@ jobs:
           branch: main
       #          create_branch: true
 
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: echo "Changes!"
+
+      - name: "Run if no changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        run: echo "No Changes!"
+
       - name: Changes detection
         env:
-          changes_detected: ${{ steps.auto-commit-action.outputs.changes_detected }}
-          commit_hash: ${{ steps.auto-commit-action.outputs.commit_hash }}
+          changed: ${{ steps.auto-commit-action.outputs.changes_detected }}
+          commit: ${{ steps.auto-commit-action.outputs.commit_hash }}
         run: |
-          echo "Changes detected: $CHANGED_DETECTED - Commit hash: $COMMIT_HASH"
+          echo "Changes detected: $changed - Commit hash: $commit"
