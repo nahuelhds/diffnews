@@ -10,6 +10,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Pull branch
+        run: git pull
+
       - name: Fetch RSS Feed
         uses: Promptly-Technologies-LLC/rss-fetch-action@v2
         with:
