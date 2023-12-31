@@ -28,15 +28,12 @@ jobs:
           branch: main
       #          create_branch: true
 
-      - name: "Run if changes have been detected"
-        if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        run: echo "Changes!"
-
-      - name: "Run if no changes have been detected"
+      - name: "Feed has not changed"
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
         run: echo "No Changes!"
 
-      - name: Changes detection
+      - name: "Changes detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
         env:
           changed: ${{ steps.auto-commit-action.outputs.changes_detected }}
           commit: ${{ steps.auto-commit-action.outputs.commit_hash }}
