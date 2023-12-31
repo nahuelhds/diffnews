@@ -2,7 +2,7 @@ name: Update RSS test
 
 on:
   schedule:
-      - cron: "*/15 * * * *"
+      - cron: '*/15 * * * *'
 
 jobs:
   fetch-rss:
