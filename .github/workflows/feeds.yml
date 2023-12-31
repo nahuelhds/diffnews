@@ -34,7 +34,6 @@ jobs:
           commit_message: 'Update RSS test'
           file_pattern: ${{ env.feed_file_path }}
           branch: ${{ env.branch }}
-          create_branch: true
 
       - name: "Feed has not changed"
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
