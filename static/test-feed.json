@@ -7,6 +7,20 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/bienestar/vida-sana/banarse-por-la-manana-o-por-la-noche-un-medico-se-vuelve-viral-al-reavivar-la-cuestion-en-tiktok",
+      "title": "¿Bañarse por la mañana o por la noche? Un médico se vuelve viral al reavivar la cuestión en TikTok",
+      "link": "https://www.elpais.com.uy/bienestar/vida-sana/banarse-por-la-manana-o-por-la-noche-un-medico-se-vuelve-viral-al-reavivar-la-cuestion-en-tiktok",
+      "published": "2023-12-31T15:00:00.000Z",
+      "description": "Las duchas nocturnas tienen tres ventajas; una de ellas es que el agua caliente activa la melatonina, que es una hormona inductora del sueño"
+    },
+    {
+      "id": "https://www.elpais.com.uy/ovacion/futbol/mira-el-especial-homenaje-que-se-esconde-detras-del-habitual-festejo-de-gol-de-german-cano-nuevo-rey-de-america",
+      "title": "Mirá el especial homenaje que se esconde detrás del habitual festejo de gol de Germán Cano, nuevo Rey de América",
+      "link": "https://www.elpais.com.uy/ovacion/futbol/mira-el-especial-homenaje-que-se-esconde-detras-del-habitual-festejo-de-gol-de-german-cano-nuevo-rey-de-america",
+      "published": "2023-12-31T14:52:05.000Z",
+      "description": "Ese que vimos en 40 ocasiones durante el 2023 tiene un significado muy particular que dio a conocer el propio futbolista."
+    },
+    {
       "id": "https://www.elpais.com.uy/ovacion/multideportivo/tragedia-en-salto-muere-un-competidor-de-carreras-de-motos-tras-caerse-a-la-pista-y-ser-atropellado",
       "title": "Tragedia en Salto: muere un competidor de carreras de motos tras caerse a la pista y ser atropellado",
       "link": "https://www.elpais.com.uy/ovacion/multideportivo/tragedia-en-salto-muere-un-competidor-de-carreras-de-motos-tras-caerse-a-la-pista-y-ser-atropellado",
@@ -131,20 +145,6 @@
       "link": "https://rurales.elpais.com.uy/opinion/surfeando-la-montana-rusa-aventuras-y-desventuras-de-la-soja-en-tiempos-festivos",
       "published": "2023-12-31T07:00:00.000Z",
       "description": "Justo cuando pensábamos que la temporada navideña traería paz y tranquilidad, el mercado de la soja decidió organizar su propia fiesta de fin de año con una volatilidad que ni el trineo de Santa podría seguir. En las últimas semanas, los precios de..."
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/la-semana-ganadera/se-da-una-atipica-valorizacion-del-hilton-al-final-del-ano",
-      "title": "Se da una atípica valorización del Hilton al final del año",
-      "link": "https://rurales.elpais.com.uy/la-semana-ganadera/se-da-una-atipica-valorizacion-del-hilton-al-final-del-ano",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "La Semana Ganadera"
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/opinion/pensando-en-sanidad-animal-aun-queda-mucho-por-hacer",
-      "title": "Pensando en sanidad animal   “aún queda mucho por hacer”",
-      "link": "https://rurales.elpais.com.uy/opinion/pensando-en-sanidad-animal-aun-queda-mucho-por-hacer",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Mientras el mundo hace fuerza para evitar el avance de las enfermedades, apoyándose en el concepto “una sola salud”, impulsado por la Organización Mundial de la Salud (OMS), cada vez aparecen más pestes de origen animal que afectan o ponen en..."
     }
   ]
 }
