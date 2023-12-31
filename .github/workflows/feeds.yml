@@ -1,8 +1,12 @@
 name: Update RSS test
 
 on:
+  workflow_dispatch:
   schedule:
       - cron: '*/15 * * * *'
+env:
+  branch: feeds
+  feed_file_path: './static/test-feed.json'
 
 jobs:
   fetch-rss:
@@ -11,6 +15,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.branch }}
 
       - name: Pull branch
         run: git pull
@@ -19,16 +25,16 @@ jobs:
         uses: Promptly-Technologies-LLC/rss-fetch-action@v2
         with:
           feed_url: 'https://www.elpais.com.uy/rss/latest'
-          file_path: './static/test-feed.json'
+          file_path: ${{ env.feed_file_path }}
 
       - name: Commit and push changes to repository
         id: auto-commit-action
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: 'Update RSS test'
-          file_pattern: './static/test-feed.json'
+          file_pattern: ${{ env.feed_file_path }}
+          branch: ${{ env.branch }}
           create_branch: true
-          branch: feeds
 
       - name: "Feed has not changed"
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
