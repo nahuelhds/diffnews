@@ -5,7 +5,7 @@ on:
   schedule:
     - cron: '*/15 * * * *'
 env:
-  branch: feeds
+  branch: main
   feed_file_path: './static/test-feed.json'
 
 jobs:
