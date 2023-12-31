@@ -28,4 +28,4 @@ jobs:
         env:
           changes_detected: "${{ steps.auto-commit-action.outputs.changes_detected }}"
           commit_hash: "${{ steps.auto-commit-action.outputs.commit_hash }}"
-        run: echo "Changes detected: $CHANGED_DETECTED - Commite hash: $COMMIT_HASH"
+        run: 'echo "Changes detected: $CHANGED_DETECTED - Commite hash: $COMMIT_HASH"'
