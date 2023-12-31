@@ -25,10 +25,10 @@ jobs:
           branch: main
 #          create_branch: true
 
-      - name: "Run if changes have been detected"
+      - name: Changes detected
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        run: 'echo "Changes! Commit: ${{ steps.auto-commit-action.outputs.commit }}"'
+        run: "echo \"Changes! Commit: ${{ steps.auto-commit-action.outputs.commit }}\""
 
-      - name: "Run if no changes have been detected"
+      - name: No changes have been detected
         if: steps.auto-commit-action.outputs.changes_detected == 'false'
         run: echo "No Changes!"
