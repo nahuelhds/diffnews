@@ -7,6 +7,20 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/ovacion/multideportivo/tragedia-en-salto-muere-un-competidor-de-carreras-de-motos-tras-caerse-a-la-pista-y-ser-atropellado",
+      "title": "Tragedia en Salto: muere un competidor de carreras de motos tras caerse a la pista y ser atropellado",
+      "link": "https://www.elpais.com.uy/ovacion/multideportivo/tragedia-en-salto-muere-un-competidor-de-carreras-de-motos-tras-caerse-a-la-pista-y-ser-atropellado",
+      "published": "2023-12-31T14:29:08.000Z",
+      "description": "Durante una fecha del campeonato local de motociclismo amateur, quien lideraba una de las carreras en pista de tierra, perdió el dominio del birrodado y cayó a la pista, siendo embestido."
+    },
+    {
+      "id": "https://www.elpais.com.uy/tvshow/personajes/milett-pampita-juli-poggio-y-mas-famosos-brillaron-en-el-escenario-del-gran-desfile-del-verano",
+      "title": "Milett, Pampita, Julieta Poggio y más famosos brillaron en el escenario del gran desfile del verano",
+      "link": "https://www.elpais.com.uy/tvshow/personajes/milett-pampita-juli-poggio-y-mas-famosos-brillaron-en-el-escenario-del-gran-desfile-del-verano",
+      "published": "2023-12-31T14:28:12.000Z",
+      "description": "Decenas de celebridades se dieron cita en el desfile del shopping ubicado en La Barra. Los detalles de una noche que hizo vibrar la temporada."
+    },
+    {
       "id": "https://www.elpais.com.uy/ovacion/futbol/tottenham-vs-bournemouth-rodrigo-bentancur-vuelve-a-jugar-tras-la-lesion-y-cierra-el-2023-sumando-minutos",
       "title": "Tottenham 1-0 Bournemouth en vivo: Rodrigo Bentancur vuelve a jugar tras la lesión y cierra el 2023 con minutos",
       "link": "https://www.elpais.com.uy/ovacion/futbol/tottenham-vs-bournemouth-rodrigo-bentancur-vuelve-a-jugar-tras-la-lesion-y-cierra-el-2023-sumando-minutos",
@@ -131,20 +145,6 @@
       "link": "https://rurales.elpais.com.uy/opinion/pensando-en-sanidad-animal-aun-queda-mucho-por-hacer",
       "published": "2023-12-31T07:00:00.000Z",
       "description": "Mientras el mundo hace esfuerzos para evitar el avance de las enfermedades, apoyándose en el concepto “una sola salud”, impulsado por la Organización Mundial de la Salud (OMS), cada vez aparecen más pestes de origen animal que afectan o ponen en..."
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/opinion/ninos-traviesos-en-un-sube-y-baja-pintado-de-color-esperanza",
-      "title": "Niños traviesos en un sube y baja pintado de color esperanza...",
-      "link": "https://rurales.elpais.com.uy/opinion/ninos-traviesos-en-un-sube-y-baja-pintado-de-color-esperanza",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Cambiante y desafiante fue el 2023 en materia agropecuaria. Un año donde la “Niña” mostró toda su rudeza a través de una de las mayores secas que se recuerden, con las devastadoras consecuencias económicas, y luego el “Niño”, que no le fue en zaga,..."
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/opinion/gulliver",
-      "title": "Gulliver",
-      "link": "https://rurales.elpais.com.uy/opinion/gulliver",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Lemuel Gulliver, la figura de Swift, llegó a la orilla del mar extenuado tras el naufragio de su embarcación “El Antílope” en una isla llamada Liliput. Cuando volvió en sí no se podía mover. Tenía cada parte de su cuerpo atada por pequeñas..."
     }
   ]
 }
