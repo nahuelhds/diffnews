@@ -7,6 +7,13 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/vida-actual/fin-de-ano-google-celebro-la-noche-vieja-con-un-doodle-y-le-da-la-bienvenida-al-2024",
+      "title": "Fin de Año: Google celebró la Noche Vieja con un doodle y le da la bienvenida al 2024",
+      "link": "https://www.elpais.com.uy/vida-actual/fin-de-ano-google-celebro-la-noche-vieja-con-un-doodle-y-le-da-la-bienvenida-al-2024",
+      "published": "2023-12-31T16:46:51.000Z",
+      "description": "Como es habitual, el gigante de Internet destaca celebraciones, aniversarios y hechos históricos. En esta ocasión, despide al 2023  con un doodle festivo"
+    },
+    {
       "id": "https://www.elpais.com.uy/informacion/servicios/grande-ganador-metodo-cajera-numeros-cumpleanos-gordo-premio",
       "title": "Ganador de La Grande le pidió a la cajera que eligiera los números ellas y la mujer se basó en su cumpleaños",
       "link": "https://www.elpais.com.uy/informacion/servicios/grande-ganador-metodo-cajera-numeros-cumpleanos-gordo-premio",
@@ -64,10 +71,10 @@
     },
     {
       "id": "https://www.elpais.com.uy/ovacion/futbol/tottenham-vs-bournemouth-rodrigo-bentancur-vuelve-a-jugar-tras-la-lesion-y-cierra-el-2023-sumando-minutos",
-      "title": "Tottenham 3-0 Bournemouth en vivo: Rodrigo Bentancur vuelve a jugar tras la lesión y cierra el 2023 con minutos",
+      "title": "Tottenham 3-1 Bournemouth: Rodrigo Bentancur volvió a jugar tras la lesión y cerró el 2023 con minutos",
       "link": "https://www.elpais.com.uy/ovacion/futbol/tottenham-vs-bournemouth-rodrigo-bentancur-vuelve-a-jugar-tras-la-lesion-y-cierra-el-2023-sumando-minutos",
       "published": "2023-12-31T14:05:01.000Z",
-      "description": "En el arranque del partido, Pape Mate Sarr aprovechó un error de la defensa para poner el gol que adelantó a los locales. Son y Richarlison anotaron los restantes."
+      "description": "En el otro encuentro de la jornada, cayó el Arsenal 2-1 ante Fulham y esto lo festejó el Liverpool de Darwin Núñez ya que si este lunes vence al Newcastle puede estirar su diferencia en la cima."
     },
     {
       "id": "https://www.elpais.com.uy/informacion/servicios/pronostico-del-tiempo-para-el-31-de-diciembre-y-1-de-enero-que-indican-inumet-y-meteorologos-independientes",
@@ -138,13 +145,6 @@
       "link": "https://www.elpais.com.uy/informacion/politica/ministerio-de-justicia-consenso-para-crearlo-diferencias-sobre-el-rol-que-tendra",
       "published": "2023-12-31T07:00:00.000Z",
       "description": "Precandidatos coinciden en su necesidad, pero Cabildo Abierto pide no hacer “cambios cosméticos” y hay matices en cuanto a cuáles serían sus tareas."
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/historias/el-veterinario-que-termino-siendo-cura",
-      "title": "El proyecto de veterinario que terminó siendo cura",
-      "link": "https://rurales.elpais.com.uy/historias/el-veterinario-que-termino-siendo-cura",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "A sus 34 años Juan Andrés “Gordo”  Verde tiene una historia larga, pero que vale la pena conocer"
     }
   ]
 }
