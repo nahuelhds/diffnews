@@ -7,6 +7,20 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/mundo/argentina/un-andinista-fallecio-en-el-aconcagua-mendoza-un-estadounidense-hizo-cumbre-y-comenzo-a-sentirse-mal",
+      "title": "Un andinista falleció en el Aconcagua, Mendoza: un estadounidense hizo cumbre y comenzó a sentirse mal",
+      "link": "https://www.elpais.com.uy/mundo/argentina/un-andinista-fallecio-en-el-aconcagua-mendoza-un-estadounidense-hizo-cumbre-y-comenzo-a-sentirse-mal",
+      "published": "2023-12-31T17:43:11.000Z",
+      "description": "El hombre falleció a más de 6000 metros de altura; se trata de la cumbre más alta de América. La temperatura en el lugar llegaba a los 38° bajo cero."
+    },
+    {
+      "id": "https://www.elpais.com.uy/ovacion/futbol/lo-tenias-al-goleador-german-cano-rey-de-america-celebro-su-premio-destacandose-en-otro-deporte-miralo",
+      "title": "¿Lo tenías al goleador? Germán Cano, Rey de América, celebró su premio destacándose en otro deporte: miralo",
+      "link": "https://www.elpais.com.uy/ovacion/futbol/lo-tenias-al-goleador-german-cano-rey-de-america-celebro-su-premio-destacandose-en-otro-deporte-miralo",
+      "published": "2023-12-31T17:37:36.000Z",
+      "description": "El delantero argentino, que fue la gran figura del Fluminense campeón de la Copa Libertadores, se lo vio celebrar su reconocimiento mostrando sus buenos dotes en otra actividad deportiva."
+    },
+    {
       "id": "https://www.elpais.com.uy/informacion/policiales/dos-hombres-fueron-condenados-por-varios-delitos-en-maldonado-comercializaban-estupefacientes",
       "title": "Dos hombres fueron condenados por varios delitos en Maldonado: comercializaban estupefacientes",
       "link": "https://www.elpais.com.uy/informacion/policiales/dos-hombres-fueron-condenados-por-varios-delitos-en-maldonado-comercializaban-estupefacientes",
@@ -131,20 +145,6 @@
       "link": "https://www.elpais.com.uy/bienestar/mente/la-que-me-espera-en-el-trabajo-pensamientos-intrusivos-que-nos-arruinan-las-vacaciones",
       "published": "2023-12-31T11:00:00.000Z",
       "description": "Qué es la ansiedad anticipatoria y cómo disfrutar las vacaciones al máximo sin pensar en el trabajo mientras estamos descansando."
-    },
-    {
-      "id": "https://www.elpais.com.uy/informacion/politica/con-el-trono-vacio-11-blancos-aspiran-a-suceder-a-antia-en-maldonado",
-      "title": "Con el trono vacío: 11 blancos aspiran a suceder a Antía en Maldonado",
-      "link": "https://www.elpais.com.uy/informacion/politica/con-el-trono-vacio-11-blancos-aspiran-a-suceder-a-antia-en-maldonado",
-      "published": "2023-12-31T07:05:00.000Z",
-      "description": "El intendente dice que “no hay favoritos” y que “la Convención Departamental manda”."
-    },
-    {
-      "id": "https://www.elpais.com.uy/multimedia/resumen-del-2023-en-video-milei-presidente-uruguay-campeon-del-mundial-sub20-una-sequia-historica-y-mas",
-      "title": "Resumen del 2023 en video: Milei presidente, Uruguay campeón del Mundial Sub20, una sequía histórica y más",
-      "link": "https://www.elpais.com.uy/multimedia/resumen-del-2023-en-video-milei-presidente-uruguay-campeon-del-mundial-sub20-una-sequia-historica-y-mas",
-      "published": "2023-12-31T07:01:00.000Z",
-      "description": "Un repaso de lo que pasó en este año que se va por el equipo de video de El País."
     }
   ]
 }
