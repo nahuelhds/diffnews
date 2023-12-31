@@ -3,7 +3,7 @@ name: Update RSS test
 on:
   workflow_dispatch:
   schedule:
-      - cron: '2,17,32,47 * * * *'
+    - cron: '2,17,32,47 * * * *'
 env:
   branch: feeds
   feed_file_path: './static/test-feed.json'
@@ -41,8 +41,5 @@ jobs:
 
       - name: "Changes detected"
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
-        env:
-          changed: ${{ steps.auto-commit-action.outputs.changes_detected }}
-          commit: ${{ steps.auto-commit-action.outputs.commit_hash }}
         run: |
-          echo "Changes detected: $changed - Commit hash: $commit"
+          echo "Diff: ${{ github.server_url }}/${{ repository }}/commit/${{ steps.auto-commit-action.outputs.commit_hash }}"
