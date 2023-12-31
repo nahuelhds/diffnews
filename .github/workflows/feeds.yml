@@ -42,4 +42,4 @@ jobs:
       - name: "Changes detected"
         if: steps.auto-commit-action.outputs.changes_detected == 'true'
         run: |
-          echo "Diff: ${{ github.server_url }}/${{ repository }}/commit/${{ steps.auto-commit-action.outputs.commit_hash }}"
+          echo "Diff: ${{ github.server_url }}/${{ github.repository }}/commit/${{ steps.auto-commit-action.outputs.commit_hash }}"
