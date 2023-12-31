@@ -1,10 +1,5 @@
 name: Update "El Pais UY" RSS feed
 
-on:
-  push:
-    branches:
-      - main
-
 jobs:
   fetch-rss:
     runs-on: ubuntu-latest
