@@ -1,29 +1,24 @@
 import "dotenv/config";
-import { extract as feedExtractor } from "@extractus/feed-extractor";
-import { extract as articleExtractor } from "@extractus/article-extractor";
 
-import feedConfigs from "./config/feeds.json" assert { type: "json" };
+import { fetchFeed } from "./service/feedService.js";
+import { saveToJsonFile } from "./service/fs.js";
+import { FeedConfig } from "./types.js";
+import { feedConfigs } from "./config.js";
+import filenamify from "filenamify";
 
-type FeedConfig = {
-  name: string;
-  skip_pattern: string;
-  url: string;
-}
-
-const feedFetchOptions = {
-  signal: AbortSignal.timeout(5000)
-};
-
-const articleFetchOptions = {
-  signal: AbortSignal.timeout(5000)
-};
+const STATIC_FOLDER = "./static";
 
 feedConfigs.forEach(async (feedConfig: FeedConfig) => {
-  const feed = await feedExtractor(feedConfig.url, undefined, feedFetchOptions);
-  console.log(feed);
-  feed.entries.forEach(async (entry) => {
-    const article = await articleExtractor(entry.link, undefined, articleFetchOptions);
-    console.log(article);
+  const feedData = await fetchFeed(feedConfig.url);
+  const destFile = `${STATIC_FOLDER}/${feedConfig.id}.json`;
+  const feedDestFile = saveToJsonFile(destFile, feedData);
+  console.log(`RSS feed saved to ${feedDestFile} successfully!`);
+
+  feedData.entries.forEach(entry => {
+    const entryFilename = filenamify(entry.id);
+    const entryDestFile = `${STATIC_FOLDER}/${feedConfig.id}/${entryFilename}.json`;
+    saveToJsonFile(entryDestFile, entry);
+    console.log(`RSS feed saved to ${entryDestFile} successfully!`);
   });
 });
 
