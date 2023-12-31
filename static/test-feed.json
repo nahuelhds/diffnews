@@ -7,6 +7,20 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/informacion/policiales/dos-hombres-fueron-condenados-por-varios-delitos-en-maldonado-comercializaban-estupefacientes",
+      "title": "Dos hombres fueron condenados por varios delitos en Maldonado: comercializaban estupefacientes",
+      "link": "https://www.elpais.com.uy/informacion/policiales/dos-hombres-fueron-condenados-por-varios-delitos-en-maldonado-comercializaban-estupefacientes",
+      "published": "2023-12-31T17:19:09.000Z",
+      "description": "Ambos fueron condenados con prisión domiciliaria."
+    },
+    {
+      "id": "https://www.elpais.com.uy/ovacion/futbol/que-manera-tan-maravillosa-de-terminar-el-mejor-ano-de-mi-vida-aseguro-priscila-la-reina-de-america-2023",
+      "title": "\"Qué manera tan maravillosa de terminar el mejor año de mi vida\", aseguró Priscila, la Reina de América 2023",
+      "link": "https://www.elpais.com.uy/ovacion/futbol/que-manera-tan-maravillosa-de-terminar-el-mejor-ano-de-mi-vida-aseguro-priscila-la-reina-de-america-2023",
+      "published": "2023-12-31T17:08:43.000Z",
+      "description": "La futbolista del Inter de Porto Alegre reaccionó tras el reconocimiento que le hicieron los periodistas que votaron en la encuesta América le responde a El País."
+    },
+    {
       "id": "https://www.elpais.com.uy/vida-actual/fin-de-ano-google-celebro-la-noche-vieja-con-un-doodle-y-le-da-la-bienvenida-al-2024",
       "title": "Fin de Año: Google celebró la Noche Vieja con un doodle y le da la bienvenida al 2024",
       "link": "https://www.elpais.com.uy/vida-actual/fin-de-ano-google-celebro-la-noche-vieja-con-un-doodle-y-le-da-la-bienvenida-al-2024",
@@ -131,20 +145,6 @@
       "link": "https://www.elpais.com.uy/multimedia/resumen-del-2023-en-video-milei-presidente-uruguay-campeon-del-mundial-sub20-una-sequia-historica-y-mas",
       "published": "2023-12-31T07:01:00.000Z",
       "description": "Un repaso de lo que pasó en este año que se va por el equipo de video de El País."
-    },
-    {
-      "id": "https://www.elpais.com.uy/ovacion/turf/eclipse-award-cerro-el-2023-con-un-gran-triunfo-en-maronas",
-      "title": "Eclipse Award cerró el 2023 con un gran triunfo en Maroñas",
-      "link": "https://www.elpais.com.uy/ovacion/turf/eclipse-award-cerro-el-2023-con-un-gran-triunfo-en-maronas",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Con Wagner Leal en su lomo, el de Farda Amiga obtuvo ayer el handicap clásico"
-    },
-    {
-      "id": "https://www.elpais.com.uy/informacion/politica/ministerio-de-justicia-consenso-para-crearlo-diferencias-sobre-el-rol-que-tendra",
-      "title": "Ministerio de Justicia: consenso para crearlo, diferencias sobre el rol que tendrá",
-      "link": "https://www.elpais.com.uy/informacion/politica/ministerio-de-justicia-consenso-para-crearlo-diferencias-sobre-el-rol-que-tendra",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Precandidatos coinciden en su necesidad, pero Cabildo Abierto pide no hacer “cambios cosméticos” y hay matices en cuanto a cuáles serían sus tareas."
     }
   ]
 }
