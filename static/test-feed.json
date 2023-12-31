@@ -7,6 +7,13 @@
   "published": "",
   "entries": [
     {
+      "id": "https://www.elpais.com.uy/mundo/ano-nuevo-en-todo-el-mundo-la-isla-kiritimati-fue-la-primera-en-celebrar-la-llegada-de-2024",
+      "title": "Año Nuevo en todo el mundo: la isla Kiritimati fue la primera en celebrar la llegada de 2024",
+      "link": "https://www.elpais.com.uy/mundo/ano-nuevo-en-todo-el-mundo-la-isla-kiritimati-fue-la-primera-en-celebrar-la-llegada-de-2024",
+      "published": "2023-12-31T15:25:04.000Z",
+      "description": "La Isla de Navidad en Kiribati, un país insular en el Océano Pacífico central, fue el primer país en destilar champán. Nueva Zelanda y Australia ya están en 2024."
+    },
+    {
       "id": "https://www.elpais.com.uy/bienestar/vida-sana/banarse-por-la-manana-o-por-la-noche-un-medico-se-vuelve-viral-al-reavivar-la-cuestion-en-tiktok",
       "title": "¿Bañarse por la mañana o por la noche? Un médico se vuelve viral al reavivar la cuestión en TikTok",
       "link": "https://www.elpais.com.uy/bienestar/vida-sana/banarse-por-la-manana-o-por-la-noche-un-medico-se-vuelve-viral-al-reavivar-la-cuestion-en-tiktok",
@@ -15,7 +22,7 @@
     },
     {
       "id": "https://www.elpais.com.uy/ovacion/futbol/mira-el-especial-homenaje-que-se-esconde-detras-del-habitual-festejo-de-gol-de-german-cano-nuevo-rey-de-america",
-      "title": "Mirá el especial homenaje que se esconde detrás del habitual festejo de gol de Germán Cano, nuevo Rey de América",
+      "title": "Mirá el especial homenaje a otro futbolista que se esconde detrás del festejo de Germán Cano, el Rey de América",
       "link": "https://www.elpais.com.uy/ovacion/futbol/mira-el-especial-homenaje-que-se-esconde-detras-del-habitual-festejo-de-gol-de-german-cano-nuevo-rey-de-america",
       "published": "2023-12-31T14:52:05.000Z",
       "description": "Ese que vimos en 40 ocasiones durante el 2023 tiene un significado muy particular que dio a conocer el propio futbolista."
@@ -138,13 +145,6 @@
       "link": "https://rurales.elpais.com.uy/opinion/un-ano-cambiante-con-un-final-que-genera-optimismo",
       "published": "2023-12-31T07:00:00.000Z",
       "description": "El sector cierra un año 2023 donde el viento estuvo de frente, en el final se observa un cambio significativo en el aspecto climático, ojalá que los mercados internacionales acompañen con buenos precios y demanda por el bien de todos."
-    },
-    {
-      "id": "https://rurales.elpais.com.uy/opinion/surfeando-la-montana-rusa-aventuras-y-desventuras-de-la-soja-en-tiempos-festivos",
-      "title": "Surfeando la Montaña Rusa: aventuras y desventuras de la soja en tiempos festivos",
-      "link": "https://rurales.elpais.com.uy/opinion/surfeando-la-montana-rusa-aventuras-y-desventuras-de-la-soja-en-tiempos-festivos",
-      "published": "2023-12-31T07:00:00.000Z",
-      "description": "Justo cuando pensábamos que la temporada traería paz y tranquilidad, el mercado de la soja decidió organizar su propia fiesta de fin de año con una volatilidad que ni el trineo de Santa podría seguir. En las últimas semanas, los precios de..."
     }
   ]
 }
