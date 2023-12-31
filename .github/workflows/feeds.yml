@@ -3,7 +3,7 @@ name: Update RSS test
 on:
   workflow_dispatch:
   schedule:
-      - cron: "* 0 * * *"
+      - cron: "* * * * *"
 
 jobs:
   fetch-rss:
