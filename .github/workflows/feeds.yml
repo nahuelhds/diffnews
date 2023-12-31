@@ -13,7 +13,7 @@ jobs:
       - name: Fetch RSS Feed
         uses: Promptly-Technologies-LLC/rss-fetch-action@v2
         with:
-          feed_url: 'https://www.elpais.com.uy/rss/'
+          feed_url: 'https://www.elpais.com.uy/rss/latest'
           file_path: './static/test-feed.json'
           remove_published: true
 
