@@ -1,0 +1,26 @@
+name: RSS - El Pais UY
+
+on:
+  push:
+    branches:
+      - archive
+
+jobs:
+  fetch-rss:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Fetch RSS Feed
+        uses: Promptly-Technologies-LLC/rss-fetch-action@v2
+        with:
+          feed_url: 'https://www.elpais.com.uy/rss/'
+          file_path: './archive/feed.json'
+
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Update RSS feed'
+          file_pattern: '*.json'
