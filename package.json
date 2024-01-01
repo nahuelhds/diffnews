@@ -26,12 +26,15 @@
   },
   "homepage": "https://github.com/nahuelhds/diffnews#readme",
   "dependencies": {
-    "@extractus/article-extractor": "^8.0.4",
+    "@extractus/article-extractor": "^7.3.1",
     "@extractus/feed-extractor": "^7.0.8",
+    "@types/html-to-text": "^9.0.4",
     "dayjs": "^1.11.10",
+    "diff": "^5.1.0",
     "dotenv": "^16.3.1",
     "filenamify": "^6.0.0",
-    "filenamify-url": "^3.1.0"
+    "filenamify-url": "^3.1.0",
+    "html-to-text": "^9.0.5"
   },
   "devDependencies": {
     "@types/jest": "~29.5",
