@@ -2,7 +2,7 @@ import { FeedEntry } from "@extractus/feed-extractor";
 import { extract as articleExtractor } from "@extractus/article-extractor";
 import filenamify from "filenamify";
 import { STATIC_FOLDER } from "../constants.js";
-import { FeedConfig, Article, DiffType } from "../types.js";
+import { FeedConfig, Article, DiffType, ArticleDiff } from "../types.js";
 import fs from "fs";
 import { saveToJsonFile } from "../utils/fs-utils.js";
 import { compile } from "html-to-text";
@@ -38,29 +38,11 @@ export function retrievePreviousArticleVersion(article: Article): Article {
   return JSON.parse(fileContent) as Article;
 }
 
-export function articleHasChanged(article: Article, previous: Article): boolean {
-  if (previous.title !== article.title) {
-    return true;
-  }
-
-  if (previous.description !== article.description) {
-    return true;
-  }
-
-  return previous.contentText !== article.contentText;
-}
-
-export function pushDiffToArticle(article: Article, diffType: DiffType, diff: Change[]) {
+export function createArticleDiff(diffType: DiffType, diff: Change[]): ArticleDiff {
   return {
-    ...article,
-    diffs: [
-      ...article.diffs,
-      {
-        createdAt: new Date().toISOString(),
-        published: false,
-        type: diffType,
-        diff: diff
-      }
-    ]
+    createdAt: new Date().toISOString(),
+    published: false,
+    type: diffType,
+    diff: diff
   };
 }

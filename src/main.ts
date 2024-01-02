@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { FeedConfig, DiffType } from "./types.js";
+import { FeedConfig, DiffType, ArticleDiff } from "./types.js";
 import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import dayjs from "dayjs";
 import { feedConfigs } from "./config.js";
@@ -8,10 +8,10 @@ import {
   articleExists,
   storeArticle,
   createArticle,
-  articleHasChanged,
   retrievePreviousArticleVersion,
-  pushDiffToArticle
+  createArticleDiff
 } from "./services/articleService.js";
+
 import { STATIC_FOLDER } from "./constants.js";
 import { saveToJsonFile } from "./utils/fs-utils.js";
 import { diffWords } from "diff";
@@ -49,20 +49,35 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
     }
 
     const previous = retrievePreviousArticleVersion(article);
-    if (!articleHasChanged(article, previous)) {
-      console.log(`[NOT CHANGED]: ${article.id}`);
-      return;
-    }
-
+    const newDiffs: ArticleDiff[] = [];
     if (previous.title !== article.title) {
       const diff = diffWords(previous.title, article.title);
-      const changedArticle = pushDiffToArticle(article, DiffType.TITLE, diff);
-      void storeArticle(changedArticle);
-      // const diffyUrl = await postToDiffy(titlePatch);
-      console.log(`[DIFF TITLE]: ${article.id}`);
+      newDiffs.push(createArticleDiff(DiffType.TITLE, diff));
     }
 
+    if (previous.description !== article.description) {
+      const diff = diffWords(previous.description, article.description);
+      newDiffs.push(createArticleDiff(DiffType.DESCRIPTION, diff));
+    }
 
+    if (previous.contentText !== article.contentText) {
+      const diff = diffWords(previous.contentText, article.contentText);
+      newDiffs.push(createArticleDiff(DiffType.CONTENT, diff));
+    }
+
+    if (newDiffs.length === 0) {
+      return console.log(`[NOT CHANGED]: ${article.id}`);
+    }
+
+    const changedArticle = {
+      ...article,
+      diffs: [
+        ...article.diffs,
+        ...newDiffs
+      ]
+    };
+    void storeArticle(changedArticle);
+    console.log(`[CHANGED]: ${article.id}`);
   } catch (err) {
     console.error("[ERROR]", feedEntry.id, err);
   }
@@ -70,5 +85,6 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
 
 // function postChanges() {
 //   // Twitter process
+// const diffyUrl = await postToDiffy(titlePatch);
 //   const snapshotFilename = await createDiffSnapshot(diff);
 // }
