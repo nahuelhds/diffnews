@@ -19,9 +19,10 @@ export function parseFeeds() {
 async function storeNewArticlesOnly(feedEntry: FeedEntry, feedConfig: FeedConfig) {
   const article = await createArticle(feedEntry, feedConfig);
   if (articleExists(article)) {
+    // console.log(`[EXISTS]: ${article.entryId}`);
     return;
   }
 
-  void storeArticle(article);
   console.log(`[NEW]: ${article.entryId}`);
+  void storeArticle(article);
 }

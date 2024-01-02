@@ -26,10 +26,11 @@ export function parseArticles() {
 
         if (diffs === null) {
           console.log(`[TOO OLD]: ${file}`);
+          return articlePath;
         }
 
         if (diffs.length === 0) {
-          console.log(`[NO DIFFS]: ${file}`);
+          // console.log(`[NO DIFFS]: ${file}`);
           return articlePath;
         }
 
