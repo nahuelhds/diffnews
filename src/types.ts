@@ -8,17 +8,19 @@ export type FeedConfig = {
 }
 
 export type ArticleDiff = {
+  articleId: string,
+  articleUrl: string,
   createdAt: string; // Date ISO
-  type: DiffType;
-  published: boolean;
   diff: Change[];
+  feedConfigId: string,
+  publishedAt?: string; // Date ISO
+  type: DiffType;
 }
 
 export type Article = ArticleData & {
-  id: string,
+  entryId: string,
   feedConfigId: string;
   contentText: string;
-  diffs: ArticleDiff[]
 }
 
 export enum DiffType {

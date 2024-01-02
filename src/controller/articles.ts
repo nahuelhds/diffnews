@@ -1,0 +1,79 @@
+import { FeedConfig, ArticleDiff, DiffType, Article } from "../types.js";
+import dayjs from "dayjs";
+import {
+  storeArticle,
+  getArticlesDir,
+  parseArticleFromFile,
+  createNextArticle
+} from "../services/articleService.js";
+import { diffWords } from "diff";
+import { feedConfigs } from "../config.js";
+import fs from "fs";
+import { storeDiff, createArticleDiff } from "../services/diffService.js";
+
+
+const oneDayAgo = dayjs().subtract(1, "day");
+
+export function parseArticles() {
+  return feedConfigs.map((feedConfig: FeedConfig) => {
+    const articlesDir = getArticlesDir(feedConfig);
+    return fs.readdirSync(articlesDir)
+      .map(async (file) => {
+        const articlePath = `${articlesDir}/${file}`;
+        const article = parseArticleFromFile(`${articlesDir}/${file}`);
+        const next = await createNextArticle(article);
+        const diffs = parseDiffs(article, next);
+
+        if (diffs === null) {
+          console.log(`[TOO OLD]: ${file}`);
+        }
+
+        if (diffs.length === 0) {
+          console.log(`[NO DIFFS]: ${file}`);
+          return articlePath;
+        }
+
+        // There are diffs
+        console.log(`[DIFFS FOUND]: ${file}`);
+        // Store the diffs first
+        diffs.map(storeDiff);
+
+        // Then update the article state
+        return storeArticle(next);
+      });
+  });
+}
+
+function parseDiffs(current: Article, next: Article) {
+  // TODO: make this configurable by feed
+  const published = dayjs(current.published);
+  if (published < oneDayAgo) {
+    // Don't want to process entries longer than one day
+    return null;
+  }
+
+  // Check if article has changed
+  const newDiffs: ArticleDiff[] = [];
+  if (current.title !== next.title) {
+    const diff = diffWords(current.title, next.title);
+    newDiffs.push(createArticleDiff(next, DiffType.TITLE, diff));
+  }
+
+  if (current.description !== next.description) {
+    const diff = diffWords(current.description, next.description);
+    newDiffs.push(createArticleDiff(next, DiffType.DESCRIPTION, diff));
+  }
+
+  if (current.contentText !== next.contentText) {
+    const diff = diffWords(current.contentText, next.contentText);
+    newDiffs.push(createArticleDiff(next, DiffType.CONTENT, diff));
+  }
+
+  return newDiffs;
+}
+
+// function postChanges() {
+//   // Twitter process
+// const diffyUrl = await postToDiffy(titlePatch);
+//   const snapshotFilename = await createDiffSnapshot(diff);
+// }
