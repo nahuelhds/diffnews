@@ -18,6 +18,12 @@ export function saveToFile(destFile: string, htmlData: string) {
   return destFile;
 }
 
+
+export function removeFile(filename: string) {
+  // Write the parsed data to the file
+  fs.unlinkSync(filename);
+}
+
 function createFolderIfNotExists(destFile: string) {
   // Check if directory exists; if not, create it
   const dir = path.dirname(destFile);

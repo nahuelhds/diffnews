@@ -16,13 +16,16 @@ import { saveToJsonFile } from "./utils/fs-utils.js";
 import { createDiffSnapshot } from "./services/diff.js";
 
 const oneDayAgo = dayjs().subtract(1, "day");
-feedConfigs.forEach(async (feedConfig: FeedConfig) => {
+
+await Promise.all(feedConfigs.map(async (feedConfig: FeedConfig) => {
   const feedData = await feedExtractor(feedConfig.url);
   const destFile = `${STATIC_FOLDER}/${feedConfig.id}.json`;
   saveToJsonFile(destFile, feedData);
 
-  void feedData.entries.forEach((feedEntry) => parseFeedEntry(feedEntry, feedConfig));
-});
+  return Promise.all(feedData.entries.map((feedEntry) => parseFeedEntry(feedEntry, feedConfig)));
+}));
+
+process.exit();
 
 async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
   try {
