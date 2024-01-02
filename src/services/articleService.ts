@@ -4,7 +4,7 @@ import filenamify from "filenamify";
 import { STATIC_FOLDER } from "../constants.js";
 import { FeedConfig, Article } from "../types.js";
 import fs from "fs";
-import { saveToJsonFile } from "../utils.js";
+import { saveToJsonFile } from "../utils/fs-utils.js";
 import { compile } from "html-to-text";
 
 const htmlToText = compile({ wordwrap: 130 });
@@ -36,9 +36,7 @@ export function retrievePreviousArticleVersion(article: Article): Article {
   return JSON.parse(fileContent) as Article;
 }
 
-export function articleHasChanged(article: Article): boolean {
-  const previous = retrievePreviousArticleVersion(article);
-
+export function articleHasChanged(article: Article, previous:Article): boolean {
   if (previous.title !== article.title) {
     return true;
   }

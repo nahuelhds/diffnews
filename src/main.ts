@@ -3,10 +3,21 @@ import { FeedConfig } from "./types.js";
 import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import dayjs from "dayjs";
 import { feedConfigs } from "./config.js";
+import { createPatch } from "diff";
 
-import { articleExists, storeArticle, createArticle, articleHasChanged } from "./services/articleService.js";
+
+import {
+  articleExists,
+  storeArticle,
+  createArticle,
+  articleHasChanged,
+  retrievePreviousArticleVersion
+} from "./services/articleService.js";
 import { STATIC_FOLDER } from "./constants.js";
-import { saveToJsonFile } from "./utils.js";
+import { saveToJsonFile, saveToFile } from "./utils/fs-utils.js";
+import { html as diff2html } from "diff2html";
+import filenamify from "filenamify";
+import { buildHTMLForScreenShot } from "./services/diff.js";
 
 const oneDayAgo = dayjs().subtract(1, "day");
 feedConfigs.forEach(async (feedConfig: FeedConfig) => {
@@ -37,13 +48,26 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
       return;
     }
 
-    if (!articleHasChanged(article)) {
-      console.log(`[UNCHANGED]: ${article.id}`);
+    const previous = retrievePreviousArticleVersion(article);
+    if (!articleHasChanged(article, previous)) {
+      console.log(`[NOT CHANGED]: ${article.id}`);
       return;
     }
-    console.log(`[UPDATE]: ${article.id}`);
+
+    if (previous.title !== article.title) {
+      const diff = createPatch(article.id, previous.title, article.title);
+      const html = diff2html(diff, {
+        drawFileList: false
+      });
+
+      saveToFile(filenamify(article.id) + ".html", buildHTMLForScreenShot(html));
+
+      // const diffyUrl = await postToDiffy(titlePatch);
+      console.log(`[DIFF TITLE]: ${article.id}`);
+    }
+
+
   } catch (err) {
     console.error("[ERROR]", feedEntry.id, err);
-    console.table(feedEntry);
   }
 }
