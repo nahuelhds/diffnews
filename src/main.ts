@@ -4,7 +4,7 @@ import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import dayjs from "dayjs";
 import { feedConfigs } from "./config.js";
 
-import { articleExists, storeArticle, createArticle } from "./services/entryService.js";
+import { articleExists, storeArticle, createArticle } from "./services/articleService.js";
 import { STATIC_FOLDER } from "./constants.js";
 import { saveToJsonFile } from "./utils.js";
 
