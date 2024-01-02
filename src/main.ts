@@ -72,7 +72,7 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
     const changedArticle = {
       ...article,
       diffs: [
-        ...article.diffs,
+        ...previous.diffs,
         ...newDiffs
       ]
     };
