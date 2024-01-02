@@ -2,10 +2,11 @@ import { FeedEntry } from "@extractus/feed-extractor";
 import { extract as articleExtractor } from "@extractus/article-extractor";
 import filenamify from "filenamify";
 import { STATIC_FOLDER } from "../constants.js";
-import { FeedConfig, Article } from "../types.js";
+import { FeedConfig, Article, DiffType } from "../types.js";
 import fs from "fs";
 import { saveToJsonFile } from "../utils/fs-utils.js";
 import { compile } from "html-to-text";
+import { Change } from "diff";
 
 const htmlToText = compile({ wordwrap: 130 });
 
@@ -15,7 +16,8 @@ export async function createArticle(entry: FeedEntry, feedConfig: FeedConfig): P
     ...articleData,
     id: entry.id,
     feedConfigId: feedConfig.id,
-    contentText: htmlToText(articleData.content)
+    contentText: htmlToText(articleData.content),
+    diffs: []
   };
 }
 
@@ -36,7 +38,7 @@ export function retrievePreviousArticleVersion(article: Article): Article {
   return JSON.parse(fileContent) as Article;
 }
 
-export function articleHasChanged(article: Article, previous:Article): boolean {
+export function articleHasChanged(article: Article, previous: Article): boolean {
   if (previous.title !== article.title) {
     return true;
   }
@@ -46,4 +48,13 @@ export function articleHasChanged(article: Article, previous:Article): boolean {
   }
 
   return previous.contentText !== article.contentText;
+}
+
+export function pushDiffToArticle(article: Article, diffType: DiffType, diff: Change[]) {
+  article.diffs.push({
+    createdAt: new Date().toISOString(),
+    published: false,
+    type: diffType,
+    diff: diff
+  });
 }

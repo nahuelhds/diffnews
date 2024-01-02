@@ -1,4 +1,5 @@
 import { ArticleData } from "@extractus/article-extractor";
+import { Change } from "diff";
 
 export type FeedConfig = {
   id: string;
@@ -6,4 +7,23 @@ export type FeedConfig = {
   url: string;
 }
 
-export type Article = ArticleData & { id: string, feedConfigId: string; contentText: string; }
+export type ArticleDiff = {
+  type: DiffType;
+  published: boolean;
+  diff: Change[];
+}
+
+export type Article = ArticleData & {
+  id: string,
+  feedConfigId: string;
+  contentText: string;
+  diffs: ArticleDiff[]
+}
+
+export enum DiffType {
+  TITLE,
+  DESCRIPTION,
+  CONTENT
+}
+
+

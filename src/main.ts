@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { FeedConfig } from "./types.js";
+import { FeedConfig, DiffType } from "./types.js";
 import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import dayjs from "dayjs";
 import { feedConfigs } from "./config.js";
@@ -9,11 +9,12 @@ import {
   storeArticle,
   createArticle,
   articleHasChanged,
-  retrievePreviousArticleVersion
+  retrievePreviousArticleVersion,
+  pushDiffToArticle
 } from "./services/articleService.js";
 import { STATIC_FOLDER } from "./constants.js";
 import { saveToJsonFile } from "./utils/fs-utils.js";
-import { createDiffSnapshot } from "./services/diff.js";
+import { diffWords } from "diff";
 
 const oneDayAgo = dayjs().subtract(1, "day");
 
@@ -54,7 +55,8 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
     }
 
     if (previous.title !== article.title) {
-      await createDiffSnapshot(previous.title, article.title);
+      const diff = diffWords(previous.title, article.title);
+      pushDiffToArticle(article, DiffType.TITLE, diff);
       // const diffyUrl = await postToDiffy(titlePatch);
       console.log(`[DIFF TITLE]: ${article.id}`);
     }
@@ -64,3 +66,8 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
     console.error("[ERROR]", feedEntry.id, err);
   }
 }
+
+// function postChanges() {
+//   // Twitter process
+//   const snapshotFilename = await createDiffSnapshot(diff);
+// }
