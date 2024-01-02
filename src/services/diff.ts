@@ -1,5 +1,9 @@
 import { put } from "../utils/http-utils.js";
-import fs from "fs";
+import { saveToFile } from "../utils/fs-utils.js";
+import { Change, diffWords } from "diff";
+import puppeteer from "puppeteer";
+import { randomUUID } from "node:crypto";
+import { STATIC_FOLDER } from "../constants.js";
 
 type CreateDiffResponse = { _sharedDiff: { id: string } };
 type ApiError = { error: string };
@@ -29,8 +33,49 @@ export async function postToDiffy(diff: string): Promise<string> {
   return `https://diffy.org/diff/${response._sharedDiff.id}`;
 }
 
-const diffCss = fs.readFileSync("node_modules/diff2html/bundles/css/diff2html.min.css", { encoding: "utf8" });
+export function createDiffSnapshot(previous: string, current: string) {
+  const diff = diffWords(previous, current);
+  const html = createHtmlFromChanges(diff);
+  const tmpFilename = `${STATIC_FOLDER}/${randomUUID()}.html`;
+  saveToFile(tmpFilename, html);
+  return takeSnapshot(tmpFilename);
+}
 
-export function buildHTMLForScreenShot(html: string) {
-  return `<html><head><meta charset="UTF-8" /><style>${diffCss}</style></head><body>${html}</body></html>`;
+function createHtmlFromChanges(changes: Change[]) {
+  const htmlString = changes.map((part) => {
+    if (part.removed) {
+      return `<del style="background-color: #fee8e9;">${part.value}</del>`;
+    }
+
+    if (part.added) {
+      return `<ins style="background-color: #dfd;">${part.value}</ins>`;
+    }
+    return part.value;
+  });
+
+  return `
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../assets/styles.css">
+      </head>
+      <body>
+      <p>
+      ${htmlString.join("")}
+      </p>
+      </body>
+    </html>
+  `;
+}
+
+export async function takeSnapshot(filename: string) {
+  const browser = await puppeteer.launch({ headless: false });
+  const page = await browser.newPage();
+  await page.setViewport({
+    width: 480,
+    height: 800
+  });
+  await page.goto(`file://${process.cwd()}/${filename}`);
+  console.log("ready");
 }

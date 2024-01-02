@@ -3,8 +3,6 @@ import { FeedConfig } from "./types.js";
 import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import dayjs from "dayjs";
 import { feedConfigs } from "./config.js";
-import { createPatch } from "diff";
-
 
 import {
   articleExists,
@@ -14,10 +12,8 @@ import {
   retrievePreviousArticleVersion
 } from "./services/articleService.js";
 import { STATIC_FOLDER } from "./constants.js";
-import { saveToJsonFile, saveToFile } from "./utils/fs-utils.js";
-import { html as diff2html } from "diff2html";
-import filenamify from "filenamify";
-import { buildHTMLForScreenShot } from "./services/diff.js";
+import { saveToJsonFile } from "./utils/fs-utils.js";
+import { createDiffSnapshot } from "./services/diff.js";
 
 const oneDayAgo = dayjs().subtract(1, "day");
 feedConfigs.forEach(async (feedConfig: FeedConfig) => {
@@ -55,13 +51,7 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
     }
 
     if (previous.title !== article.title) {
-      const diff = createPatch(article.id, previous.title, article.title);
-      const html = diff2html(diff, {
-        drawFileList: false
-      });
-
-      saveToFile(filenamify(article.id) + ".html", buildHTMLForScreenShot(html));
-
+      await createDiffSnapshot(previous.title, article.title);
       // const diffyUrl = await postToDiffy(titlePatch);
       console.log(`[DIFF TITLE]: ${article.id}`);
     }

@@ -36,7 +36,8 @@
     "filenamify": "^6.0.0",
     "filenamify-url": "^3.1.0",
     "html-to-text": "^9.0.5",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "puppeteer": "^21.6.1"
   },
   "devDependencies": {
     "@types/diff": "^5.0.9",
