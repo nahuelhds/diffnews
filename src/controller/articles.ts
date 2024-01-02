@@ -69,16 +69,10 @@ function getDifferences(current: Article, next: Article) {
     newDiffs.push(createArticleDiff(next, DiffType.DESCRIPTION, diff));
   }
 
-  if (current.contentText !== next.contentText) {
-    const diff = diffWords(current.contentText, next.contentText);
-    newDiffs.push(createArticleDiff(next, DiffType.CONTENT, diff));
-  }
+  // if (current.contentText !== next.contentText) {
+  //   const diff = diffWords(current.contentText, next.contentText);
+  //   newDiffs.push(createArticleDiff(next, DiffType.CONTENT, diff));
+  // }
 
   return newDiffs;
 }
-
-// function postChanges() {
-//   // Twitter process
-// const diffyUrl = await postToDiffy(titlePatch);
-//   const snapshotFilename = await createDiffSnapshot(diff);
-// }

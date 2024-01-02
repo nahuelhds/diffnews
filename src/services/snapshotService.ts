@@ -1,7 +1,7 @@
 import { put } from "../utils/http-utils.js";
 import { saveToFile, removeFile } from "../utils/fs-utils.js";
 import { Change } from "diff";
-import puppeteer, { BoundingBox } from "puppeteer";
+import puppeteer, { BoundingBox, Browser } from "puppeteer";
 import sharp from "sharp";
 import { STATIC_FOLDER } from "../constants.js";
 import { randomUUID } from "node:crypto";
@@ -108,10 +108,20 @@ async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, d
   }
 }
 
+let browserSingleton: Browser;
+
+async function getBrowserInstance() {
+  if (browserSingleton !== undefined) {
+    return browserSingleton;
+  }
+  browserSingleton = await puppeteer.launch({ headless: "new" });
+  return browserSingleton;
+}
+
 async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: string) {
   // Open the file with the browser
-  const browser = await puppeteer.launch({ headless: "new" });
-  const page = await browser.newPage();
+  const browser = await getBrowserInstance();
+  const page = await browser.newPage();;
   await page.setViewport({ width: 800, height: 1600 });
   await page.goto(`file://${process.cwd()}/${htmlFile}`);
 

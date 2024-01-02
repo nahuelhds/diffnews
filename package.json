@@ -58,7 +58,7 @@
   },
   "scripts": {
     "dev": "tsc -w -p tsconfig.json",
-    "dev:start": "node build/main.js",
+    "dev:start": "node --trace-warnings build/main.js",
     "dev:build": "tsc -p tsconfig.json",
     "clean": "rimraf coverage build tmp",
     "prestart": "npm run clean && tsc -p tsconfig.release.json",
