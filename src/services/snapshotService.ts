@@ -37,13 +37,10 @@ export async function postToDiffy(diff: string): Promise<string> {
 // Algorithm strongly inspired on https://github.com/j-e-d/NYTdiff/blob/master/nytdiff.py#L186-L240
 export async function createChangesSnapshot(diff: Change[], destinationFile: string) {
   const htmlContent = createHtmlFromChanges(diff);
-  return await takeSnapshot(htmlContent, destinationFile);
-}
 
-export async function takeSnapshot(html: string, destinationFile: string) {
   // Create the HTML
   const filename = `${STATIC_FOLDER}/${randomUUID()}.html`;
-  saveToFile(filename, html);
+  saveToFile(filename, htmlContent);
 
   // Take the snapshot
   const browserSnapshot = destinationFile.replace("jpeg", "tmp.png");
@@ -89,25 +86,6 @@ function createHtmlFromChanges(changes: Change[]) {
   `;
 }
 
-async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, destinationFile: string) {
-  const { x, y, width, height } = boundingBox;
-  try {
-    await sharp(sourceFile)
-      .extract({
-        left: Math.floor(x),
-        top: Math.floor(y),
-        width: Math.ceil(width),
-        height: Math.ceil(height)
-      })
-      .toFile(destinationFile);
-  } catch (err) {
-    // Error happen because of the excessive height
-    // TODO: scroll when is too long based on <del> and <ins> tags and not just <p>
-    console.error(sourceFile, boundingBox, err);
-    return;
-  }
-}
-
 let browserSingleton: Browser;
 
 export async function getBrowserInstance() {
@@ -131,4 +109,23 @@ async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: 
   const boundingBox = await diffElement.boundingBox();
   await page.screenshot({ path: screenshotDestinationPath });
   return boundingBox;
+}
+
+async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, destinationFile: string) {
+  const { x, y, width, height } = boundingBox;
+  try {
+    await sharp(sourceFile)
+      .extract({
+        left: Math.floor(x),
+        top: Math.floor(y),
+        width: Math.ceil(width),
+        height: Math.ceil(height)
+      })
+      .toFile(destinationFile);
+  } catch (err) {
+    // Error happen because of the excessive height
+    // TODO: scroll when is too long based on <del> and <ins> tags and not just <p>
+    console.error(sourceFile, boundingBox, err);
+    return;
+  }
 }
