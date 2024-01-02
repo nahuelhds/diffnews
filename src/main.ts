@@ -56,7 +56,8 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
 
     if (previous.title !== article.title) {
       const diff = diffWords(previous.title, article.title);
-      pushDiffToArticle(article, DiffType.TITLE, diff);
+      const changedArticle = pushDiffToArticle(article, DiffType.TITLE, diff);
+      void storeArticle(changedArticle);
       // const diffyUrl = await postToDiffy(titlePatch);
       console.log(`[DIFF TITLE]: ${article.id}`);
     }

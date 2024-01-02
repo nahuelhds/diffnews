@@ -51,10 +51,16 @@ export function articleHasChanged(article: Article, previous: Article): boolean 
 }
 
 export function pushDiffToArticle(article: Article, diffType: DiffType, diff: Change[]) {
-  article.diffs.push({
-    createdAt: new Date().toISOString(),
-    published: false,
-    type: diffType,
-    diff: diff
-  });
+  return {
+    ...article,
+    diffs: [
+      ...article.diffs,
+      {
+        createdAt: new Date().toISOString(),
+        published: false,
+        type: diffType,
+        diff: diff
+      }
+    ]
+  };
 }
