@@ -1,11 +1,11 @@
 import path from "node:path";
 import fs from "fs";
 
-export function saveToJsonFile(destFile: string, feedData: object) {
+export function saveToJsonFile(destFile: string, jsonObject: object) {
   createFolderIfNotExists(destFile);
 
   // Write the parsed data to the file
-  const jsonFeedData = JSON.stringify(feedData, null, 2);
+  const jsonFeedData = JSON.stringify(jsonObject, null, 2);
   fs.writeFileSync(destFile, jsonFeedData);
   return destFile;
 }
