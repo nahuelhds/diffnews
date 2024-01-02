@@ -110,7 +110,7 @@ async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, d
 
 let browserSingleton: Browser;
 
-async function getBrowserInstance() {
+export async function getBrowserInstance() {
   if (browserSingleton !== undefined) {
     return browserSingleton;
   }
@@ -121,7 +121,8 @@ async function getBrowserInstance() {
 async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: string) {
   // Open the file with the browser
   const browser = await getBrowserInstance();
-  const page = await browser.newPage();;
+  const page = await browser.newPage();
+  ;
   await page.setViewport({ width: 800, height: 1600 });
   await page.goto(`file://${process.cwd()}/${htmlFile}`);
 

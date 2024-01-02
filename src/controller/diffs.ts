@@ -7,7 +7,10 @@ import {
   getSnapshotsDir
 } from "../services/diffService.js";
 import fs from "fs";
-import { createChangesSnapshot } from "../services/snapshotService.js";
+import {
+  createChangesSnapshot,
+  getBrowserInstance
+} from "../services/snapshotService.js";
 
 /**
  * Traverses every diff file and generates the related screenshot
@@ -27,6 +30,10 @@ export function prepareDiffsForPublishing() {
     for (const keyValue of changesToProcessSync) {
       await createChangesSnapshot(keyValue.changes, keyValue.path);
     }
+
+    // Close puppeteer
+    const browser = await getBrowserInstance();
+    await browser.close();
     return;
   });
 }
