@@ -2,9 +2,9 @@ import { put } from "../utils/http-utils.js";
 import { saveToFile, removeFile } from "../utils/fs-utils.js";
 import { Change } from "diff";
 import puppeteer, { BoundingBox } from "puppeteer";
-import { randomUUID } from "node:crypto";
-import { STATIC_FOLDER } from "../constants.js";
 import sharp from "sharp";
+import { STATIC_FOLDER } from "../constants.js";
+import { randomUUID } from "node:crypto";
 
 type CreateDiffResponse = { _sharedDiff: { id: string } };
 type ApiError = { error: string };
@@ -35,22 +35,22 @@ export async function postToDiffy(diff: string): Promise<string> {
 }
 
 // Algorithm strongly inspired on https://github.com/j-e-d/NYTdiff/blob/master/nytdiff.py#L186-L240
-export async function createDiffSnapshot(diff: Change[]) {
-  const html = createHtmlFromChanges(diff);
-  return await takeSnapshot(html);
+export async function createChangesSnapshot(diff: Change[], destinationFile: string) {
+  const htmlContent = createHtmlFromChanges(diff);
+  return await takeSnapshot(htmlContent, destinationFile);
 }
 
-export async function takeSnapshot(html: string) {
+export async function takeSnapshot(html: string, destinationFile: string) {
   // Create the HTML
   const filename = `${STATIC_FOLDER}/${randomUUID()}.html`;
   saveToFile(filename, html);
 
   // Take the snapshot
-  const browserSnapshot = `${filename}-tmp.png`;
+  const browserSnapshot = destinationFile.replace("jpeg", "tmp.png");
   const boundingBox = await takeBrowserSnapshot(filename, browserSnapshot);
 
   // Crop the text
-  const finalSnapshot = filename.replace("html", "jpeg");
+  const finalSnapshot = destinationFile;
   await cropTextFromImage(browserSnapshot, boundingBox, finalSnapshot);
 
   // Delete the temporary files
@@ -91,14 +91,21 @@ function createHtmlFromChanges(changes: Change[]) {
 
 async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, destinationFile: string) {
   const { x, y, width, height } = boundingBox;
-  await sharp(sourceFile)
-    .extract({
-      left: Math.floor(x),
-      top: Math.floor(y),
-      width: Math.ceil(width),
-      height: Math.ceil(height)
-    })
-    .toFile(destinationFile);
+  try {
+    await sharp(sourceFile)
+      .extract({
+        left: Math.floor(x),
+        top: Math.floor(y),
+        width: Math.ceil(width),
+        height: Math.ceil(height)
+      })
+      .toFile(destinationFile);
+  } catch (err) {
+    // Error happen because of the excessive height
+    // TODO: scroll when is too long based on <del> and <ins> tags and not just <p>
+    console.error(sourceFile, boundingBox, err);
+    return;
+  }
 }
 
 async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: string) {

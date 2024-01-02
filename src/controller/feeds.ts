@@ -9,6 +9,9 @@ import {
   createArticle
 } from "../services/articleService.js";
 
+/**
+ * Fetches every feed and saves the brand-new articles
+ */
 export function parseFeeds() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const feedData = await feedExtractor(feedConfig.url);

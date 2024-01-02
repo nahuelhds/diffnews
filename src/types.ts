@@ -10,8 +10,8 @@ export type FeedConfig = {
 export type ArticleDiff = {
   articleId: string,
   articleUrl: string,
+  changes: Change[];
   createdAt: string; // Date ISO
-  diff: Change[];
   feedConfigId: string,
   publishedAt?: string; // Date ISO
   type: DiffType;

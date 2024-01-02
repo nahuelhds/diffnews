@@ -14,15 +14,19 @@ import { storeDiff, createArticleDiff } from "../services/diffService.js";
 
 const oneDayAgo = dayjs().subtract(1, "day");
 
+/**
+ * Fetches every article and compare it with its current version.
+ * It registers every diff and saves them in a separate folder
+ */
 export function parseArticles() {
   return feedConfigs.map((feedConfig: FeedConfig) => {
     const articlesDir = getArticlesDir(feedConfig);
     return fs.readdirSync(articlesDir)
       .map(async (file) => {
         const articlePath = `${articlesDir}/${file}`;
-        const article = parseArticleFromFile(`${articlesDir}/${file}`);
+        const article = parseArticleFromFile(articlePath);
         const next = await createNextArticle(article);
-        const diffs = parseDiffs(article, next);
+        const diffs = getDifferences(article, next);
 
         if (diffs === null) {
           console.log(`[TOO OLD]: ${file}`);
@@ -45,7 +49,7 @@ export function parseArticles() {
   });
 }
 
-function parseDiffs(current: Article, next: Article) {
+function getDifferences(current: Article, next: Article) {
   // TODO: make this configurable by feed
   const published = dayjs(current.published);
   if (published < oneDayAgo) {

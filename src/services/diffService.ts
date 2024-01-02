@@ -1,8 +1,9 @@
 import { STATIC_FOLDER } from "../constants.js";
-import { ArticleDiff, Article, DiffType } from "../types.js";
+import { ArticleDiff, Article, DiffType, FeedConfig } from "../types.js";
 import { saveToJsonFile } from "../utils/fs-utils.js";
 import { Change } from "diff";
 import filenamify from "filenamify";
+import fs from "fs";
 
 export function getDiffFilename(diff: ArticleDiff) {
   return `${STATIC_FOLDER}/${diff.feedConfigId}/diffs/${filenamify(diff.createdAt)}.json`;
@@ -10,6 +11,14 @@ export function getDiffFilename(diff: ArticleDiff) {
 
 export async function storeDiff(diff: ArticleDiff) {
   return saveToJsonFile(getDiffFilename(diff), diff);
+}
+
+export function getDiffsDir(feedConfig: FeedConfig) {
+  return `${STATIC_FOLDER}/${feedConfig.id}/diffs`;
+}
+
+export function getSnapshotsDir(feedConfig: FeedConfig) {
+  return `${STATIC_FOLDER}/${feedConfig.id}/snapshots`;
 }
 
 export function createArticleDiff(article: Article, diffType: DiffType, diff: Change[]): ArticleDiff {
@@ -20,6 +29,11 @@ export function createArticleDiff(article: Article, diffType: DiffType, diff: Ch
     createdAt: new Date().toISOString(),
     publishedAt: undefined,
     type: diffType,
-    diff: diff
+    changes: diff
   };
+}
+
+export function parseDiffFromFile(filepath: string): ArticleDiff {
+  const fileContent = fs.readFileSync(filepath, { encoding: "utf8" });
+  return JSON.parse(fileContent) as ArticleDiff;
 }
