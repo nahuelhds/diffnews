@@ -6,4 +6,4 @@ export type FeedConfig = {
   url: string;
 }
 
-export type Article = ArticleData & { feedConfigId: string; contentText: string; }
+export type Article = ArticleData & { id: string, feedConfigId: string; contentText: string; }

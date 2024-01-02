@@ -4,7 +4,7 @@ import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import dayjs from "dayjs";
 import { feedConfigs } from "./config.js";
 
-import { articleExists, storeArticle, createArticle } from "./services/articleService.js";
+import { articleExists, storeArticle, createArticle, articleHasChanged } from "./services/articleService.js";
 import { STATIC_FOLDER } from "./constants.js";
 import { saveToJsonFile } from "./utils.js";
 
@@ -33,16 +33,17 @@ async function parseFeedEntry(feedEntry: FeedEntry, feedConfig: FeedConfig) {
       void storeArticle(article);
       // TODO: post about this on the original twit (searched by url)
       //  which will be thread where the changes will be tracked
-      console.log(`[NEW] ARTICLE: ${article.url}`);
+      console.log(`[NEW]: ${article.id}`);
       return;
     }
 
-    // if (!entryHasChanged(entry)) {
-    //   return;
-    // }
-    console.log(`[UPDATE] ARTICLE: ${article.url}`);
+    if (!articleHasChanged(article)) {
+      console.log(`[UNCHANGED]: ${article.id}`);
+      return;
+    }
+    console.log(`[UPDATE]: ${article.id}`);
   } catch (err) {
-    console.warn("Could not parse entry: ", feedEntry.link, err);
+    console.error("[ERROR]", feedEntry.id, err);
     console.table(feedEntry);
   }
 }

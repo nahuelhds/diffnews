@@ -13,13 +13,14 @@ export async function createArticle(entry: FeedEntry, feedConfig: FeedConfig): P
   const articleData = await articleExtractor(entry.link);
   return {
     ...articleData,
+    id: entry.id,
     feedConfigId: feedConfig.id,
     contentText: htmlToText(articleData.content)
   };
 }
 
 export function getArticleFilename(article: Article) {
-  return `${STATIC_FOLDER}/${article.feedConfigId}/${filenamify(article.url)}.json`;
+  return `${STATIC_FOLDER}/${article.feedConfigId}/${filenamify(article.id)}.json`;
 }
 
 export function articleExists(article: Article) {
@@ -35,7 +36,16 @@ export function retrievePreviousArticleVersion(article: Article): Article {
   return JSON.parse(fileContent) as Article;
 }
 
-export function articleHasChanged(): boolean {
-  // const previousVersion = retrievePreviousArticleVersion(article);
-  return false;
+export function articleHasChanged(article: Article): boolean {
+  const previous = retrievePreviousArticleVersion(article);
+
+  if (previous.title !== article.title) {
+    return true;
+  }
+
+  if (previous.description !== article.description) {
+    return true;
+  }
+
+  return previous.contentText !== article.contentText;
 }
