@@ -30,7 +30,7 @@ export function parseArticles() {
         const diffs = getDifferences(article, next);
 
         if (diffs === null) {
-          logger.warn(`[TOO OLD]: ${file}`);
+          logger.debug(`[TOO OLD]: ${file}`);
           return articlePath;
         }
 
