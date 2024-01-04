@@ -12,6 +12,7 @@ import {
   getBrowserInstance
 } from "../services/snapshotService.js";
 import { Change } from "diff";
+import { logger } from "../services/loggerService.js";
 
 type ChangePathTouple = [Change[], string]
 
@@ -37,10 +38,17 @@ export function prepareDiffsForPublishing() {
       // Filter null values
       .filter(x => x);
 
+    if (changesToProcessSync.length === 0) {
+      logger.debug("No diffs to publish");
+      return;
+    }
+
     for (const [changes, path] of changesToProcessSync) {
+      logger.debug("Creating snapshot for path %s", path);
       await createChangesSnapshot(changes, path);
     }
 
+    logger.debug("Closing puppeteer");
     // Close puppeteer
     const browser = await getBrowserInstance();
     await browser.close();

@@ -1,8 +1,9 @@
 import "dotenv/config";
+import { logger } from "./services/loggerService.js";
 import { parseFeeds } from "./controller/feeds.js";
 import { parseArticles } from "./controller/articles.js";
 import { prepareDiffsForPublishing } from "./controller/diffs.js";
-import { logger } from "./services/loggerService.js";
+import { publishDiffs } from "./controller/publish.js";
 
 export async function app() {
   await Promise.all([
@@ -13,7 +14,10 @@ export async function app() {
       logger.info("Articles parsed");
     }),
     Promise.all(prepareDiffsForPublishing()).then(() => {
-      logger.info("Diffs parsed");
+      logger.info("Diff preparation finished");
+    }),
+    Promise.all(publishDiffs()).then(() => {
+      logger.info("Diffs publishing finished");
     })
   ]);
 }

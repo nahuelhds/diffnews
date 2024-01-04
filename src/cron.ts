@@ -3,7 +3,7 @@ import { app } from "./app.js";
 while (true) {
   await app();
   // every five minutes, run everything again
-  await sleep(1000 * 60 * 5);
+  await sleep(1000 * 60);
 }
 
 function sleep(ms) {

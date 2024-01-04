@@ -4,8 +4,9 @@ export const feedConfigs: FeedConfig[] = [
   {
     "id": "el-pais",
     "name": "El País",
-    "url": "https://www.elpais.com.uy/rss/"
-  },
+    "url": "https://www.elpais.com.uy/rss/",
+    "twitter": "elpaisuy"
+  }
   // {
   //   "id": "la-diaria",
   //   "name": "La Diaria",
