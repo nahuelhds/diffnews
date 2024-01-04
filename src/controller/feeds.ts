@@ -8,6 +8,8 @@ import {
   storeArticle,
   createArticle
 } from "../services/articleService.js";
+import { saveToJsonFile } from "../utils/fs-utils.js";
+import { STATIC_FOLDER } from "../constants.js";
 
 /**
  * Fetches every feed and saves the brand-new articles
@@ -15,6 +17,8 @@ import {
 export function parseFeeds() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const feedData = await feedExtractor(feedConfig.url);
+    const feedPath = `${STATIC_FOLDER}/${feedConfig.id}.json`
+    saveToJsonFile(feedPath, feedData)
     return Promise.all(feedData.entries.map((feedEntry) => storeNewArticlesOnly(feedEntry, feedConfig)));
   });
 }
@@ -22,7 +26,7 @@ export function parseFeeds() {
 async function storeNewArticlesOnly(feedEntry: FeedEntry, feedConfig: FeedConfig) {
   const article = await createArticle(feedEntry, feedConfig);
   if (articleExists(article)) {
-    // console.log(`[EXISTS]: ${article.entryId}`);
+    console.debug(`[EXISTS]: ${article.entryId}`);
     return;
   }
 

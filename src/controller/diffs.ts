@@ -11,6 +11,9 @@ import {
   createChangesSnapshot,
   getBrowserInstance
 } from "../services/snapshotService.js";
+import { Change } from "diff";
+
+type ChangePathTouple = [Change[], string]
 
 /**
  * Traverses every diff file and generates the related screenshot
@@ -20,15 +23,22 @@ export function prepareDiffsForPublishing() {
     const diffsDir = getDiffsDir(feedConfig);
     const snapshotsDir = getSnapshotsDir(feedConfig);
     const changesToProcessSync = fs.readdirSync(diffsDir)
-      .map((file) => {
+      .map((file): (ChangePathTouple | null) => {
+        const snapshotPath = `${snapshotsDir}/${file}`;
+        if (fs.existsSync(snapshotPath)) {
+          return null;
+        }
+
         const diffPath = `${diffsDir}/${file}`;
         const diff = parseDiffFromFile(diffPath);
 
-        const snapshotPath = `${snapshotsDir}/${file}`;
-        return { changes: diff.changes, path: `${snapshotPath}.jpeg` };
-      });
-    for (const keyValue of changesToProcessSync) {
-      await createChangesSnapshot(keyValue.changes, keyValue.path);
+        return [diff.changes, `${snapshotPath}.jpeg`];
+      })
+      // Filter null values
+      .filter(x => x);
+
+    for (const [changes, path] of changesToProcessSync) {
+      await createChangesSnapshot(changes, path);
     }
 
     // Close puppeteer

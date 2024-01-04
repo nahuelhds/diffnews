@@ -63,6 +63,7 @@
     "clean": "rimraf coverage build tmp",
     "prestart": "npm run clean && tsc -p tsconfig.release.json",
     "start": "node build/main.js",
+    "start:cron": "node build/cron.js",
     "lint": "eslint . --ext .ts --ext .mts",
     "test": "jest --coverage --passWithNoTests",
     "prettier": "prettier --config .prettierrc --write .",

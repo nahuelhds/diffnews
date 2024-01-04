@@ -34,7 +34,7 @@ export function parseArticles() {
         }
 
         if (diffs.length === 0) {
-          // console.log(`[NO DIFFS]: ${file}`);
+          console.debug(`[NO DIFFS]: ${file}`);
           return articlePath;
         }
 
