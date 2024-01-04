@@ -5,6 +5,7 @@ import puppeteer, { BoundingBox, Browser } from "puppeteer";
 import sharp from "sharp";
 import { STATIC_FOLDER } from "../constants.js";
 import { randomUUID } from "node:crypto";
+import { logger } from "./loggerService.js";
 
 type CreateDiffResponse = { _sharedDiff: { id: string } };
 type ApiError = { error: string };
@@ -125,7 +126,7 @@ async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, d
   } catch (err) {
     // Error happen because of the excessive height
     // TODO: scroll when is too long based on <del> and <ins> tags and not just <p>
-    console.error(sourceFile, boundingBox, err);
+    logger.error(sourceFile, boundingBox, err);
     return;
   }
 }

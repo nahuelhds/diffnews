@@ -10,6 +10,7 @@ import {
 } from "../services/articleService.js";
 import { saveToJsonFile } from "../utils/fs-utils.js";
 import { STATIC_FOLDER } from "../constants.js";
+import { logger } from "../services/loggerService.js";
 
 /**
  * Fetches every feed and saves the brand-new articles
@@ -26,10 +27,10 @@ export function parseFeeds() {
 async function storeNewArticlesOnly(feedEntry: FeedEntry, feedConfig: FeedConfig) {
   const article = await createArticle(feedEntry, feedConfig);
   if (articleExists(article)) {
-    console.debug(`[EXISTS]: ${article.entryId}`);
+    logger.debug(`[EXISTS]: ${article.entryId}`);
     return;
   }
 
-  console.log(`[NEW]: ${article.entryId}`);
+  logger.info(`[NEW]: ${article.entryId}`);
   void storeArticle(article);
 }

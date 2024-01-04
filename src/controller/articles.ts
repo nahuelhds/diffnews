@@ -10,6 +10,7 @@ import { diffWords } from "diff";
 import { feedConfigs } from "../config.js";
 import fs from "fs";
 import { storeDiff, createArticleDiff } from "../services/diffService.js";
+import { logger } from "../services/loggerService.js";
 
 
 const oneDayAgo = dayjs().subtract(1, "day");
@@ -29,17 +30,17 @@ export function parseArticles() {
         const diffs = getDifferences(article, next);
 
         if (diffs === null) {
-          console.log(`[TOO OLD]: ${file}`);
+          logger.warn(`[TOO OLD]: ${file}`);
           return articlePath;
         }
 
         if (diffs.length === 0) {
-          console.debug(`[NO DIFFS]: ${file}`);
+          logger.debug(`[NO DIFFS]: ${file}`);
           return articlePath;
         }
 
         // There are diffs
-        console.log(`[DIFFS FOUND]: ${file}`);
+        logger.info(`[DIFFS FOUND]: ${file}`);
         // Store the diffs first
         diffs.map(storeDiff);
 
