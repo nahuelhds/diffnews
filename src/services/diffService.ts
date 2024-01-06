@@ -21,6 +21,9 @@ export function getSnapshotsDir(feedConfig: FeedConfig) {
   return `${STATIC_FOLDER}/${feedConfig.id}/snapshots`;
 }
 
+export function getArticlesDirForDiff(diff: ArticleDiff) {
+  return `${STATIC_FOLDER}/${diff.feedConfigId}/articles`;
+}
 export function createArticleDiff(article: Article, diffType: DiffType, diff: Change[]): ArticleDiff {
   return {
     feedConfigId: article.feedConfigId,

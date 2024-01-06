@@ -22,9 +22,8 @@ export async function createArticle(entry: FeedEntry, feedConfig: FeedConfig): P
 export async function createNextArticle(current: Article): Promise<Article> {
   const articleData = await articleExtractor(current.url);
   return {
+    ...current,
     ...articleData,
-    entryId: current.entryId,
-    feedConfigId: current.feedConfigId,
     contentText: htmlToText(articleData.content),
   };
 }

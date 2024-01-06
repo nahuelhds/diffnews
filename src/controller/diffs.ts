@@ -7,10 +7,7 @@ import {
   getSnapshotsDir
 } from "../services/diffService.js";
 import fs from "fs";
-import {
-  createChangesSnapshot,
-  getBrowserInstance
-} from "../services/snapshotService.js";
+import { createChangesSnapshot } from "../services/snapshotService.js";
 import { Change } from "diff";
 import { logger } from "../services/loggerService.js";
 
@@ -47,11 +44,6 @@ export function prepareDiffsForPublishing() {
       logger.debug("Creating snapshot for path %s", path);
       await createChangesSnapshot(changes, path);
     }
-
-    logger.debug("Closing puppeteer");
-    // Close puppeteer
-    const browser = await getBrowserInstance();
-    await browser.close();
     return;
   });
 }

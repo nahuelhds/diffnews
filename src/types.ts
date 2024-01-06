@@ -23,6 +23,7 @@ export type Article = ArticleData & {
   entryId: string,
   feedConfigId: string;
   contentText: string;
+  lastTweetId?: string;
 }
 
 export enum DiffType {

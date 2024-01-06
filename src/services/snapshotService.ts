@@ -99,7 +99,7 @@ export async function getBrowserInstance() {
 
 async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: string) {
   // Open the file with the browser
-  const browser = await getBrowserInstance();
+  const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
   ;
   await page.setViewport({ width: 800, height: 1600 });
@@ -109,6 +109,10 @@ async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: 
   const diffElement = await page.$("p");
   const boundingBox = await diffElement.boundingBox();
   await page.screenshot({ path: screenshotDestinationPath });
+
+  logger.debug("Closing puppeteer");
+  // Close puppeteer
+  await browser.close();
   return boundingBox;
 }
 
