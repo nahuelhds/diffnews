@@ -8,10 +8,10 @@ const client = new TwitterApi({
   accessToken: twitterConfig.accessToken,
   accessSecret: twitterConfig.accessTokenSecret
 });
+// This method is cached after the first time
+const user = await client.currentUserV2();
 
 export async function getTwitUrl(tweetId: string) {
-  // This method is cached after the first time
-  const user = await client.currentUserV2();
   return `https://twitter.com/${user.data.username}/status/${tweetId}`;
 }
 
