@@ -36,7 +36,7 @@ export function publishArticles() {
       }
 
       if (article.lastTweetId !== undefined) {
-        logger.debug("Article %s already published at %s", await getTwitUrl(article));
+        logger.debug("Article is already published at %s", await getTwitUrl(article.lastTweetId));
         return;
       }
 
@@ -70,12 +70,20 @@ export function publishDiffs() {
         const diffPath = `${diffsDir}/${file}`;
         const diff = parseDiffFromFile(diffPath);
 
+        if(diff.tweetId !== undefined) {
+          logger.debug("Diff already published at %s", await getTwitUrl(diff.tweetId));
+          return;
+        }
+
         const articlesDir = getArticlesDirForDiff(diff);
         const articlePath = `${articlesDir}/${filenamify(diff.articleId)}.json`;
         const article = parseArticleFromFile(articlePath);
+        const tweetId = await publishOnTwitter(article, diff, snapshot);
 
-        article.lastTweetId = await publishOnTwitter(article, diff, snapshot);
-        logger.info("Diff published: %s", await getTwitUrl(article));
+        diff.tweetId = tweetId;
+        article.lastTweetId = tweetId;
+        logger.info("Diff published: %s", await getTwitUrl(article.lastTweetId));
+        saveToJsonFile(diffPath, diff);
         saveToJsonFile(articlePath, article);
 
         // removeFile(diffPath);

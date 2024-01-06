@@ -9,10 +9,10 @@ const client = new TwitterApi({
   accessSecret: twitterConfig.accessTokenSecret
 });
 
-export async function getTwitUrl(article: Article) {
+export async function getTwitUrl(tweetId: string) {
   // This method is cached after the first time
   const user = await client.currentUserV2();
-  return `https://twitter.com/${user.data.username}/status/${article.lastTweetId}`;
+  return `https://twitter.com/${user.data.username}/status/${tweetId}`;
 }
 
 export async function startThread(article: Article) {

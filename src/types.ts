@@ -16,7 +16,7 @@ export type ArticleDiff = {
   feedConfigId: string,
   publishedAt?: string; // Date ISO
   type: DiffType;
-  lastTwitterStatusId?: string, // url to the last twitter post
+  tweetId?: string, // url to the last twitter post
 }
 
 export type Article = ArticleData & {
