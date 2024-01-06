@@ -24,7 +24,7 @@ import filenamify from "filenamify";
 /**
  * Traverses every article and starts what will be the thread of it
  */
-export function publishArticles() {
+export function publishArticlesOnTwitter() {
   return feedConfigs.map((feedConfig: FeedConfig) => {
     const articlesDir = getArticlesDir(feedConfig);
     return fs.readdirSync(articlesDir).map(async (file) => {
@@ -55,7 +55,7 @@ export function publishArticles() {
 /**
  * Traverses every diff file and generates the related screenshot
  */
-export function publishDiffs() {
+export function publishDiffsOnTwitter() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const diffsDir = getDiffsDir(feedConfig);
     const snapshotsDir = getSnapshotsDir(feedConfig);

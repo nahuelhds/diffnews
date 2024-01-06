@@ -16,7 +16,7 @@ export async function getTwitUrl(tweetId: string) {
 }
 
 export async function startThread(article: Article) {
-  return await client.v2.tweet(`Seguí la edición de esta nota en este hilo.\n\n🔗 ${article.url} ${article.url}`);
+  return await client.v2.tweet(`👉 Seguí la edición de esta nota en este hilo.\n\n"${article.title}"\n\n🔗 ${article.url} ${article.url}`);
 }
 
 export async function continueThread(article: Article, diff: ArticleDiff, snapshot: string) {

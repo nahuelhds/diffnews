@@ -16,7 +16,7 @@ type ChangePathTouple = [Change[], string]
 /**
  * Traverses every diff file and generates the related screenshot
  */
-export function prepareDiffsForPublishing() {
+export function createDiffsSnapshots() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const diffsDir = getDiffsDir(feedConfig);
     const snapshotsDir = getSnapshotsDir(feedConfig);

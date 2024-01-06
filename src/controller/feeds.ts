@@ -15,7 +15,7 @@ import { logger } from "../services/loggerService.js";
 /**
  * Fetches every feed and saves the brand-new articles
  */
-export function parseFeeds() {
+export function fetchNewArticles() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const feedData = await feedExtractor(feedConfig.url);
     const feedPath = `${STATIC_FOLDER}/${feedConfig.id}.json`

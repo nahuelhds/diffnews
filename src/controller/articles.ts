@@ -19,7 +19,7 @@ const oneDayAgo = dayjs().subtract(1, "day");
  * Fetches every article and compare it with its current version.
  * It registers every diff and saves them in a separate folder
  */
-export function parseArticles() {
+export function checkArticlesDiff() {
   return feedConfigs.map((feedConfig: FeedConfig) => {
     const articlesDir = getArticlesDir(feedConfig);
     return fs.readdirSync(articlesDir)
