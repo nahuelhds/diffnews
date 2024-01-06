@@ -47,7 +47,7 @@ export async function authorizeNewApp() {
   const { accessToken, accessSecret } = await client.login(pin);
 
   logger.info("You have successfully log. Store this credentials on the environment configuration.");
-  logger.info("- Access token: %s", accessToken);
-  logger.info("- Access token secret: %s", accessSecret);
+  logger.info("ACCESS_TOKEN=%s", accessToken);
+  logger.info("ACCESS_TOKEN_SECRET=%s", accessSecret);
 }
 
