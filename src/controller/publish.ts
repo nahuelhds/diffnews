@@ -36,7 +36,7 @@ export function publishArticles() {
       }
 
       if (article.lastTweetId !== undefined) {
-        logger.info("Article %s already published at %s", await getTwitUrl(article));
+        logger.debug("Article %s already published at %s", await getTwitUrl(article));
         return;
       }
 
