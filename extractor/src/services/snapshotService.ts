@@ -3,7 +3,7 @@ import { saveToFile, removeFile } from "../utils/fs-utils.js";
 import { Change } from "diff";
 import puppeteer, { BoundingBox, Browser } from "puppeteer";
 import sharp from "sharp";
-import { PUBLIC_FOLDER } from "../constants.js";
+import { STATIC_FOLDER } from "../constants.js";
 import { randomUUID } from "node:crypto";
 import { logger } from "./loggerService.js";
 
@@ -27,7 +27,11 @@ export async function postToDiffy(diff: string): Promise<string> {
       throw new Error(response.error);
     } else {
       throw new Error(
-        `Could not find 'id' of created diff in the response json.\nBody:\n\n${JSON.stringify(response, null, 2)}`
+        `Could not find 'id' of created diff in the response json.\nBody:\n\n${JSON.stringify(
+          response,
+          null,
+          2,
+        )}`,
       );
     }
   }
@@ -36,11 +40,14 @@ export async function postToDiffy(diff: string): Promise<string> {
 }
 
 // Algorithm strongly inspired on https://github.com/j-e-d/NYTdiff/blob/master/nytdiff.py#L186-L240
-export async function createChangesSnapshot(diff: Change[], destinationFile: string) {
+export async function createChangesSnapshot(
+  diff: Change[],
+  destinationFile: string,
+) {
   const htmlContent = createHtmlFromChanges(diff);
 
   // Create the HTML
-  const filename = `${PUBLIC_FOLDER}/${randomUUID()}.html`;
+  const filename = `${STATIC_FOLDER}/${randomUUID()}.html`;
   saveToFile(filename, htmlContent);
 
   // Take the snapshot
@@ -97,11 +104,13 @@ export async function getBrowserInstance() {
   return browserSingleton;
 }
 
-async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: string) {
+async function takeBrowserSnapshot(
+  htmlFile: string,
+  screenshotDestinationPath: string,
+) {
   // Open the file with the browser
   const browser = await puppeteer.launch({ headless: "new" });
   const page = await browser.newPage();
-  ;
   await page.setViewport({ width: 800, height: 1600 });
   await page.goto(`file://${process.cwd()}/${htmlFile}`);
 
@@ -116,7 +125,11 @@ async function takeBrowserSnapshot(htmlFile: string, screenshotDestinationPath: 
   return boundingBox;
 }
 
-async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, destinationFile: string) {
+async function cropTextFromImage(
+  sourceFile: string,
+  boundingBox: BoundingBox,
+  destinationFile: string,
+) {
   const { x, y, width, height } = boundingBox;
   try {
     await sharp(sourceFile)
@@ -124,7 +137,7 @@ async function cropTextFromImage(sourceFile: string, boundingBox: BoundingBox, d
         left: Math.floor(x),
         top: Math.floor(y),
         width: Math.ceil(width),
-        height: Math.ceil(height)
+        height: Math.ceil(height),
       })
       .toFile(destinationFile);
   } catch (err) {

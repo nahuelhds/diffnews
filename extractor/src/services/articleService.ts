@@ -1,7 +1,7 @@
 import { FeedEntry } from "@extractus/feed-extractor";
 import { extract as articleExtractor } from "@extractus/article-extractor";
 import filenamify from "filenamify";
-import { PUBLIC_FOLDER } from "../constants.js";
+import { STATIC_FOLDER } from "../constants.js";
 import { FeedConfig, Article } from "../types.js";
 import fs from "fs";
 import { saveToJsonFile } from "../utils/fs-utils.js";
@@ -9,7 +9,10 @@ import { compile } from "html-to-text";
 
 const htmlToText = compile({ wordwrap: 130 });
 
-export async function createArticle(entry: FeedEntry, feedConfig: FeedConfig): Promise<Article> {
+export async function createArticle(
+  entry: FeedEntry,
+  feedConfig: FeedConfig,
+): Promise<Article> {
   const articleData = await articleExtractor(entry.link);
   return {
     ...articleData,
@@ -29,7 +32,7 @@ export async function createNextArticle(current: Article): Promise<Article> {
 }
 
 export function getArticlesDir(feedConfig: FeedConfig) {
-  return `${PUBLIC_FOLDER}/${feedConfig.id}/articles`;
+  return `${STATIC_FOLDER}/${feedConfig.id}/articles`;
 }
 
 export function parseArticleFromFile(filepath: string): Article {
@@ -38,7 +41,9 @@ export function parseArticleFromFile(filepath: string): Article {
 }
 
 export function getArticleFilename(article: Article) {
-  return `${PUBLIC_FOLDER}/${article.feedConfigId}/articles/${filenamify(article.entryId)}.json`;
+  return `${STATIC_FOLDER}/${article.feedConfigId}/articles/${filenamify(
+    article.entryId,
+  )}.json`;
 }
 
 export function articleExists(article: Article) {

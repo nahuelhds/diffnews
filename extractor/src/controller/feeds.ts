@@ -5,10 +5,10 @@ import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 import {
   articleExists,
   storeArticle,
-  createArticle
+  createArticle,
 } from "../services/articleService.js";
 import { saveToJsonFile } from "../utils/fs-utils.js";
-import { PUBLIC_FOLDER } from "../constants.js";
+import { STATIC_FOLDER } from "../constants.js";
 import { logger } from "../services/loggerService.js";
 
 /**
@@ -17,13 +17,20 @@ import { logger } from "../services/loggerService.js";
 export function fetchNewArticles(feedConfigs: FeedConfig[]) {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const feedData = await feedExtractor(feedConfig.url);
-    const feedPath = `${PUBLIC_FOLDER}/${feedConfig.id}.json`
-    saveToJsonFile(feedPath, feedData)
-    return Promise.all(feedData.entries.map((feedEntry) => storeNewArticlesOnly(feedEntry, feedConfig)));
+    const feedPath = `${STATIC_FOLDER}/${feedConfig.id}.json`;
+    saveToJsonFile(feedPath, feedData);
+    return Promise.all(
+      feedData.entries.map((feedEntry) =>
+        storeNewArticlesOnly(feedEntry, feedConfig),
+      ),
+    );
   });
 }
 
-async function storeNewArticlesOnly(feedEntry: FeedEntry, feedConfig: FeedConfig) {
+async function storeNewArticlesOnly(
+  feedEntry: FeedEntry,
+  feedConfig: FeedConfig,
+) {
   const article = await createArticle(feedEntry, feedConfig);
   if (articleExists(article)) {
     logger.debug(`[EXISTS]: ${article.entryId}`);
