@@ -26,7 +26,12 @@ export function getSnapshotsDir(feedConfig: FeedConfig) {
 export function getArticlesDirForDiff(diff: ArticleDiff) {
   return `${PUBLIC_FOLDER}/${diff.feedConfigId}/articles`;
 }
-export function createArticleDiff(article: Article, diffType: DiffType, diff: Change[]): ArticleDiff {
+
+export function createArticleDiff(
+  article: Article,
+  diffType: DiffType,
+  diff: Change[]
+): ArticleDiff {
   return {
     feedConfigId: article.feedConfigId,
     articleId: article.entryId,
@@ -34,7 +39,7 @@ export function createArticleDiff(article: Article, diffType: DiffType, diff: Ch
     createdAt: new Date().toISOString(),
     publishedAt: undefined,
     type: diffType,
-    changes: diff
+    changes: diff,
   };
 }
 

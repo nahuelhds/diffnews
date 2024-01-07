@@ -9,6 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@extractus/article-extractor": "^8.0.4",
+    "diff": "^5.1.0",
+    "diff2html": "^3.4.46",
+    "html-to-text": "^9.0.5",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
@@ -16,6 +20,9 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.2.0",
     "@testing-library/react": "^14.1.2",
+    "@types/diff": "^5.0.9",
+    "@types/diff2html": "^3.0.0",
+    "@types/html-to-text": "^9.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

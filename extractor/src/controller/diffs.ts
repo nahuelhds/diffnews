@@ -20,8 +20,9 @@ export function createDiffsSnapshots() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const diffsDir = getDiffsDir(feedConfig);
     const snapshotsDir = getSnapshotsDir(feedConfig);
-    const changesToProcessSync = fs.readdirSync(diffsDir)
-      .map((file): (ChangePathTouple | null) => {
+    const changesToProcessSync = fs
+      .readdirSync(diffsDir)
+      .map((file): ChangePathTouple | null => {
         const snapshotPath = `${snapshotsDir}/${file}`;
         if (fs.existsSync(snapshotPath)) {
           return null;
@@ -33,7 +34,7 @@ export function createDiffsSnapshots() {
         return [diff.changes, `${snapshotPath}.jpeg`];
       })
       // Filter null values
-      .filter(x => x);
+      .filter((x) => x);
 
     if (changesToProcessSync.length === 0) {
       logger.debug("No diffs to publish");
