@@ -1,6 +1,7 @@
 {
-  "name": "diffnews-web",
-  "version": "0.1.0",
+  "name": "diffnews",
+  "version": "0.0.0",
+  "description": "Track news changes and post them on the social network",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -38,5 +39,26 @@
     "tailwindcss": "^3.3.0",
     "ts-jest": "^29.0.5",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">= 20.9 < 21"
+  },
+  "keywords": [
+    "diffengine",
+    "diff",
+    "social",
+    "media",
+    "news",
+    "changes"
+  ],
+  "author": "nahuelhds",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/nahuelhds/diffnews/issues"
+  },
+  "homepage": "https://github.com/nahuelhds/diffnews#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nahuelhds/diffnews.git"
   }
 }
