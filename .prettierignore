@@ -1,0 +1,7 @@
+.github
+.next
+.vscode
+coverage
+public
+package-lock.json
+
