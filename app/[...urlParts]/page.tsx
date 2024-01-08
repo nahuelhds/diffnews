@@ -17,7 +17,7 @@ async function getArticleWithHtmlDiff(
 
   try {
     const dataString = await fs.readFile(
-      process.cwd() + `/archive/${hashedUrl}.json`,
+      process.cwd() + `/public/archive/${hashedUrl}.json`,
       "utf8"
     );
     const archived = JSON.parse(dataString) as Article;
