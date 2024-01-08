@@ -20,8 +20,8 @@ export type ArticleDiff = {
 };
 
 export type Article = ArticleData & {
-  entryId: string;
-  feedConfigId: string;
+  entryId?: string;
+  feedConfigId?: string;
   contentText: string;
   lastTweetId?: string;
 };

@@ -2,6 +2,7 @@ import "./diff2html.min.css";
 import "./page.css";
 
 import { extract as articleExtractor } from "@extractus/article-extractor";
+import crypto from "crypto";
 import { createTwoFilesPatch } from "diff";
 import { html } from "diff2html";
 import { Suspense } from "react";
@@ -9,11 +10,18 @@ import { Suspense } from "react";
 import { Article } from "@/app/types";
 import { createArticle } from "@/app/utils";
 
+function buildFilename(url: string, outputLength = 40) {
+  return crypto
+    .createHash("shake256", { outputLength })
+    .update(url)
+    .digest("hex");
+}
+
 async function getArticleWithHtmlDiff(
   url: string
 ): Promise<[Article, string] | null> {
   "use server";
-  const hashedUrl = btoa(url);
+  const hashedUrl = buildFilename(url);
 
   try {
     const archived = (await import(`../archive/${hashedUrl}.json`)) as Article;

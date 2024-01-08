@@ -4,7 +4,7 @@
   "description": "Track news changes and post them on the social network",
   "private": true,
   "scripts": {
-    "extract:dev": "cd ./extractor && npm run dev:start",
+    "extract:dev": "cd ./extractor && npm run dev:build && npm run dev:start",
     "extract": "cd ./extractor && npm start",
     "dev": "next dev",
     "build": "next build",

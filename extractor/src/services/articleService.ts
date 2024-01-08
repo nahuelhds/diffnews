@@ -1,24 +1,19 @@
 import { extract as articleExtractor } from "@extractus/article-extractor";
 import { FeedEntry } from "@extractus/feed-extractor";
-import filenamify from "filenamify";
+import * as crypto from "crypto";
 import fs from "fs";
 import { compile } from "html-to-text";
 
-import { STATIC_FOLDER } from "../constants.js";
+import { ARCHIVE_FOLDER, STATIC_FOLDER } from "../constants.js";
 import { Article, FeedConfig } from "../types.js";
 import { saveToJsonFile } from "../utils/fs-utils.js";
 
 const htmlToText = compile({ wordwrap: 130 });
 
-export async function createArticle(
-  entry: FeedEntry,
-  feedConfig: FeedConfig,
-): Promise<Article> {
+export async function createArticle(entry: FeedEntry): Promise<Article> {
   const articleData = await articleExtractor(entry.link);
   return {
     ...articleData,
-    entryId: entry.id,
-    feedConfigId: feedConfig.id,
     contentText: htmlToText(articleData.content),
   };
 }
@@ -41,10 +36,16 @@ export function parseArticleFromFile(filepath: string): Article {
   return JSON.parse(fileContent) as Article;
 }
 
+function buildFilename(url: string, outputLength = 40) {
+  return crypto
+    .createHash("shake256", { outputLength })
+    .update(url)
+    .digest("hex");
+}
+
 export function getArticleFilename(article: Article) {
-  return `${STATIC_FOLDER}/${article.feedConfigId}/articles/${filenamify(
-    article.entryId,
-  )}.json`;
+  const hashedUrl = buildFilename(article.url);
+  return `${ARCHIVE_FOLDER}/${hashedUrl}.json`;
 }
 
 export function articleExists(article: Article) {

@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "tsc -w -p tsconfig.json",
+    "dev:build": "tsc -p tsconfig.json",
     "dev:start": "node --trace-warnings build/main.js",
     "dev:authorize": "node --trace-warnings build/authorize.js",
-    "dev:build": "tsc -p tsconfig.json",
     "clean": "rimraf coverage build tmp",
     "prestart": "tsc -p tsconfig.release.json",
     "start": "node build/main.js",
