@@ -9,7 +9,7 @@
     "dev:authorize": "node --trace-warnings build/authorize.js",
     "dev:build": "tsc -p tsconfig.json",
     "clean": "rimraf coverage build tmp",
-    "prestart": "npm run clean && tsc -p tsconfig.release.json",
+    "prestart": "tsc -p tsconfig.release.json",
     "start": "node build/main.js",
     "start:cron": "node build/cron.js",
     "lint": "eslint . --ext .ts --ext .mts",
