@@ -1,9 +1,10 @@
-import { STATIC_FOLDER } from "../constants.js";
-import { ArticleDiff, Article, DiffType, FeedConfig } from "../types.js";
-import { saveToJsonFile } from "../utils/fs-utils.js";
 import { Change } from "diff";
 import filenamify from "filenamify";
 import fs from "fs";
+
+import { STATIC_FOLDER } from "../constants.js";
+import { Article, ArticleDiff, DiffType, FeedConfig } from "../types.js";
+import { saveToJsonFile } from "../utils/fs-utils.js";
 
 export function getDiffFilename(diff: ArticleDiff) {
   return `${STATIC_FOLDER}/${diff.feedConfigId}/diffs/${filenamify(

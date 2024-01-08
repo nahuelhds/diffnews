@@ -1,15 +1,16 @@
 import "dotenv/config";
-import { FeedConfig } from "../types.js";
+
 import { extract as feedExtractor, FeedEntry } from "@extractus/feed-extractor";
 
+import { STATIC_FOLDER } from "../constants.js";
 import {
   articleExists,
-  storeArticle,
   createArticle,
+  storeArticle,
 } from "../services/articleService.js";
-import { saveToJsonFile } from "../utils/fs-utils.js";
-import { STATIC_FOLDER } from "../constants.js";
 import { logger } from "../services/loggerService.js";
+import { FeedConfig } from "../types.js";
+import { saveToJsonFile } from "../utils/fs-utils.js";
 
 /**
  * Fetches every feed and saves the brand-new articles

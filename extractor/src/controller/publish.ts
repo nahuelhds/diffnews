@@ -1,25 +1,27 @@
 import "dotenv/config";
-import { FeedConfig, ArticleDiff, Article } from "../types.js";
+
+import filenamify from "filenamify";
+import fs from "fs";
+
 import { feedConfigs } from "../config.js";
 import {
+  getArticlesDir,
+  parseArticleFromFile,
+} from "../services/articleService.js";
+import {
+  getArticlesDirForDiff,
   getDiffsDir,
-  parseDiffFromFile,
   getSnapshotsDir,
-  getArticlesDirForDiff
+  parseDiffFromFile,
 } from "../services/diffService.js";
-import fs from "fs";
 import { logger } from "../services/loggerService.js";
 import {
-  startThread,
+  continueThread,
   getTwitUrl,
-  continueThread
+  startThread,
 } from "../services/twitter/apiService.js";
-import {
-  parseArticleFromFile,
-  getArticlesDir
-} from "../services/articleService.js";
+import { Article, ArticleDiff, FeedConfig } from "../types.js";
 import { saveToJsonFile } from "../utils/fs-utils.js";
-import filenamify from "filenamify";
 
 /**
  * Traverses every article and starts what will be the thread of it
@@ -31,12 +33,17 @@ export function publishArticlesOnTwitter() {
       const articlePath = `${articlesDir}/${file}`;
       const article = parseArticleFromFile(articlePath);
 
-      if (!article.url.match("https://www.elpais.com.uy/informacion/politica/")) {
+      if (
+        !article.url.match("https://www.elpais.com.uy/informacion/politica/")
+      ) {
         return;
       }
 
       if (article.lastTweetId !== undefined) {
-        logger.debug("Article is already published at %s", await getTwitUrl(article.lastTweetId));
+        logger.debug(
+          "Article is already published at %s",
+          await getTwitUrl(article.lastTweetId),
+        );
         return;
       }
 
@@ -59,43 +66,52 @@ export function publishDiffsOnTwitter() {
   return feedConfigs.map(async (feedConfig: FeedConfig) => {
     const diffsDir = getDiffsDir(feedConfig);
     const snapshotsDir = getSnapshotsDir(feedConfig);
-    fs.readdirSync(diffsDir)
-      .map(async (file) => {
-        const snapshot = `${snapshotsDir}/${file}.jpeg`;
-        if (!fs.existsSync(snapshot)) {
-          logger.debug("Diff is not ready for publishing");
-          return null;
-        }
+    fs.readdirSync(diffsDir).map(async (file) => {
+      const snapshot = `${snapshotsDir}/${file}.jpeg`;
+      if (!fs.existsSync(snapshot)) {
+        logger.debug("Diff is not ready for publishing");
+        return null;
+      }
 
-        const diffPath = `${diffsDir}/${file}`;
-        const diff = parseDiffFromFile(diffPath);
+      const diffPath = `${diffsDir}/${file}`;
+      const diff = parseDiffFromFile(diffPath);
 
-        if(diff.tweetId !== undefined) {
-          logger.debug("Diff already published at %s", await getTwitUrl(diff.tweetId));
-          return;
-        }
+      if (diff.tweetId !== undefined) {
+        logger.debug(
+          "Diff already published at %s",
+          await getTwitUrl(diff.tweetId),
+        );
+        return;
+      }
 
-        const articlesDir = getArticlesDirForDiff(diff);
-        const articlePath = `${articlesDir}/${filenamify(diff.articleId)}.json`;
-        const article = parseArticleFromFile(articlePath);
-        const tweetId = await publishOnTwitter(article, diff, snapshot);
+      const articlesDir = getArticlesDirForDiff(diff);
+      const articlePath = `${articlesDir}/${filenamify(diff.articleId)}.json`;
+      const article = parseArticleFromFile(articlePath);
+      const tweetId = await publishOnTwitter(article, diff, snapshot);
 
-        diff.tweetId = tweetId;
-        article.lastTweetId = tweetId;
-        logger.info("Diff published: %s", await getTwitUrl(article.lastTweetId));
-        saveToJsonFile(diffPath, diff);
-        saveToJsonFile(articlePath, article);
+      diff.tweetId = tweetId;
+      article.lastTweetId = tweetId;
+      logger.info("Diff published: %s", await getTwitUrl(article.lastTweetId));
+      saveToJsonFile(diffPath, diff);
+      saveToJsonFile(articlePath, article);
 
-        // removeFile(diffPath);
-        // removeFile(snapshot);
-      });
+      // removeFile(diffPath);
+      // removeFile(snapshot);
+    });
   });
 }
 
-async function publishOnTwitter(article: Article, diff: ArticleDiff, snapshot: string) {
+async function publishOnTwitter(
+  article: Article,
+  diff: ArticleDiff,
+  snapshot: string,
+) {
   // If it's the first twit to be published in reply to the original twit
   if (article.lastTweetId === undefined) {
-    logger.error("Article %s has not been tweeted yet. Cannot proceed", article.url);
+    logger.error(
+      "Article %s has not been tweeted yet. Cannot proceed",
+      article.url,
+    );
     return null;
   }
   // If it's not, then need to reply to the last one (thread)

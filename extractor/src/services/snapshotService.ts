@@ -1,10 +1,12 @@
-import { put } from "../utils/http-utils.js";
-import { saveToFile, removeFile } from "../utils/fs-utils.js";
+import { randomUUID } from "node:crypto";
+
 import { Change } from "diff";
 import puppeteer, { BoundingBox, Browser } from "puppeteer";
 import sharp from "sharp";
+
 import { STATIC_FOLDER } from "../constants.js";
-import { randomUUID } from "node:crypto";
+import { removeFile, saveToFile } from "../utils/fs-utils.js";
+import { put } from "../utils/http-utils.js";
 import { logger } from "./loggerService.js";
 
 type CreateDiffResponse = { _sharedDiff: { id: string } };

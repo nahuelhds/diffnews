@@ -1,11 +1,12 @@
-import { Article } from "@/app/types";
-import { Suspense } from "react";
-import { createTwoFilesPatch } from "diff";
-import { html } from "diff2html";
-
 import "./diff2html.min.css";
 import "./page.css";
+
 import { extract as articleExtractor } from "@extractus/article-extractor";
+import { createTwoFilesPatch } from "diff";
+import { html } from "diff2html";
+import { Suspense } from "react";
+
+import { Article } from "@/app/types";
 import { createArticle } from "@/app/utils";
 
 async function getArticleWithHtmlDiff(

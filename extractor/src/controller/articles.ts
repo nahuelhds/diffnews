@@ -1,16 +1,17 @@
-import { FeedConfig, ArticleDiff, DiffType, Article } from "../types.js";
 import dayjs from "dayjs";
+import { diffWords } from "diff";
+import fs from "fs";
+
+import { feedConfigs } from "../config.js";
 import {
-  storeArticle,
+  createNextArticle,
   getArticlesDir,
   parseArticleFromFile,
-  createNextArticle,
+  storeArticle,
 } from "../services/articleService.js";
-import { diffWords } from "diff";
-import { feedConfigs } from "../config.js";
-import fs from "fs";
-import { storeDiff, createArticleDiff } from "../services/diffService.js";
+import { createArticleDiff, storeDiff } from "../services/diffService.js";
 import { logger } from "../services/loggerService.js";
+import { Article, ArticleDiff, DiffType, FeedConfig } from "../types.js";
 
 const oneDayAgo = dayjs().subtract(1, "day");
 
@@ -21,31 +22,30 @@ const oneDayAgo = dayjs().subtract(1, "day");
 export function checkArticlesDiff() {
   return feedConfigs.map((feedConfig: FeedConfig) => {
     const articlesDir = getArticlesDir(feedConfig);
-    return fs.readdirSync(articlesDir)
-      .map(async (file) => {
-        const articlePath = `${articlesDir}/${file}`;
-        const article = parseArticleFromFile(articlePath);
-        const next = await createNextArticle(article);
-        const diffs = getDifferences(article, next);
+    return fs.readdirSync(articlesDir).map(async (file) => {
+      const articlePath = `${articlesDir}/${file}`;
+      const article = parseArticleFromFile(articlePath);
+      const next = await createNextArticle(article);
+      const diffs = getDifferences(article, next);
 
-        if (diffs === null) {
-          logger.debug(`[TOO OLD]: ${file}`);
-          return articlePath;
-        }
+      if (diffs === null) {
+        logger.debug(`[TOO OLD]: ${file}`);
+        return articlePath;
+      }
 
-        if (diffs.length === 0) {
-          logger.debug(`[NO DIFFS]: ${file}`);
-          return articlePath;
-        }
+      if (diffs.length === 0) {
+        logger.debug(`[NO DIFFS]: ${file}`);
+        return articlePath;
+      }
 
-        // There are diffs
-        logger.info(`[DIFFS FOUND]: ${file}`);
-        // Store the diffs first
-        diffs.map(storeDiff);
+      // There are diffs
+      logger.info(`[DIFFS FOUND]: ${file}`);
+      // Store the diffs first
+      diffs.map(storeDiff);
 
-        // Then update the article state
-        return storeArticle(next);
-      });
+      // Then update the article state
+      return storeArticle(next);
+    });
   });
 }
 

@@ -1,9 +1,10 @@
-import { FeedConfig } from "../types.js";
-import { fetchNewArticles } from "./feeds.js";
 import { extract } from "@extractus/feed-extractor";
+
+import { STATIC_FOLDER } from "../constants.js";
+import { FeedConfig } from "../types.js";
 import { saveToJsonFile } from "../utils/fs-utils.js";
 import { MOCKED_FEED_DATA } from "./__mocks__/feedData.js";
-import { STATIC_FOLDER } from "../constants.js";
+import { fetchNewArticles } from "./feeds.js";
 import MockedFunction = jest.MockedFunction;
 
 jest.mock("@extractus/feed-extractor");

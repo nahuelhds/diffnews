@@ -1,15 +1,17 @@
 import "dotenv/config";
-import { FeedConfig } from "../types.js";
+
+import { Change } from "diff";
+import fs from "fs";
+
 import { feedConfigs } from "../config.js";
 import {
   getDiffsDir,
-  parseDiffFromFile,
   getSnapshotsDir,
+  parseDiffFromFile,
 } from "../services/diffService.js";
-import fs from "fs";
-import { createChangesSnapshot } from "../services/snapshotService.js";
-import { Change } from "diff";
 import { logger } from "../services/loggerService.js";
+import { createChangesSnapshot } from "../services/snapshotService.js";
+import { FeedConfig } from "../types.js";
 
 type ChangePathTouple = [Change[], string];
 

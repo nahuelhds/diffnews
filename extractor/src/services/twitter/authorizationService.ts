@@ -1,8 +1,10 @@
 import "dotenv/config";
+
+import inquirer from "inquirer";
 import { TwitterApi } from "twitter-api-v2";
+
 import { twitterConfig } from "../../config.js";
 import { logger } from "../loggerService.js";
-import inquirer from "inquirer";
 
 export async function authorizeNewApp() {
   const authClient = new TwitterApi({
@@ -48,9 +50,8 @@ export async function authorizeNewApp() {
   const { accessToken, accessSecret } = await client.login(pin);
 
   logger.info(
-    "You have successfully log. Store this credentials on the environment configuration."
+    "You have successfully log. Store this credentials on the environment configuration.",
   );
   logger.info("ACCESS_TOKEN=%s", accessToken);
   logger.info("ACCESS_TOKEN_SECRET=%s", accessSecret);
 }
-

@@ -1,11 +1,12 @@
-import { FeedEntry } from "@extractus/feed-extractor";
 import { extract as articleExtractor } from "@extractus/article-extractor";
+import { FeedEntry } from "@extractus/feed-extractor";
 import filenamify from "filenamify";
-import { STATIC_FOLDER } from "../constants.js";
-import { FeedConfig, Article } from "../types.js";
 import fs from "fs";
-import { saveToJsonFile } from "../utils/fs-utils.js";
 import { compile } from "html-to-text";
+
+import { STATIC_FOLDER } from "../constants.js";
+import { Article, FeedConfig } from "../types.js";
+import { saveToJsonFile } from "../utils/fs-utils.js";
 
 const htmlToText = compile({ wordwrap: 130 });
 
