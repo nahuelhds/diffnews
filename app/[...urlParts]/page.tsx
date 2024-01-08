@@ -1,5 +1,4 @@
 import { Article } from "@/app/types";
-import { promises as fs } from "fs";
 import { Suspense } from "react";
 import { createTwoFilesPatch } from "diff";
 import { html } from "diff2html";
@@ -16,11 +15,7 @@ async function getArticleWithHtmlDiff(
   const hashedUrl = btoa(url);
 
   try {
-    const dataString = await fs.readFile(
-      process.cwd() + `/public/archive/${hashedUrl}.json`,
-      "utf8"
-    );
-    const archived = JSON.parse(dataString) as Article;
+    const archived = (await import(`../archive/${hashedUrl}.json`)) as Article;
     const currentData = await articleExtractor(url);
     if (!currentData) {
       return null;
