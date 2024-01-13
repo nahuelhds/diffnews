@@ -17,7 +17,7 @@ jobs:
 
       - name: RSS Entries
         id: test-action
-        uses: nahuelhds/rss-entries-fetch-action@v0.0.0
+        uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://www.elpais.com.uy/rss/"
           destination_folder: "./app/archive"
@@ -38,7 +38,7 @@ jobs:
 
       - name: RSS Entries
         id: test-action
-        uses: nahuelhds/rss-entries-fetch-action@v0.0.0
+        uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
@@ -59,7 +59,7 @@ jobs:
 
       - name: RSS Entries
         id: test-action
-        uses: nahuelhds/rss-entries-fetch-action@v0.0.0
+        uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
@@ -80,7 +80,7 @@ jobs:
 
       - name: RSS Entries
         id: test-action
-        uses: nahuelhds/rss-entries-fetch-action@v0.0.0
+        uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "http://brecha.com.uy/feed/"
           destination_folder: "./app/archive"
@@ -101,7 +101,7 @@ jobs:
 
       - name: RSS Entries
         id: test-action
-        uses: nahuelhds/rss-entries-fetch-action@v0.0.0
+        uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
           destination_folder: "./app/archive"
