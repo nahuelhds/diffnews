@@ -1,14 +1,15 @@
 import "./diff2html.min.css";
 import "./page.css";
 
-import { extract as articleExtractor } from "@extractus/article-extractor";
+import {
+  ArticleData,
+  extract as articleExtractor,
+} from "@extractus/article-extractor";
 import crypto from "crypto";
 import { createTwoFilesPatch } from "diff";
 import { html } from "diff2html";
+import { compile } from "html-to-text";
 import { Suspense } from "react";
-
-import { Article } from "@/app/types";
-import { createArticle } from "@/app/utils";
 
 function buildFilename(url: string, outputLength = 40) {
   return crypto
@@ -17,20 +18,22 @@ function buildFilename(url: string, outputLength = 40) {
     .digest("base64url");
 }
 
+const htmlToText = compile({ wordwrap: 130 });
+
 async function getArticleWithHtmlDiff(
   url: string
-): Promise<[Article, string] | null> {
+): Promise<[ArticleData, string] | null> {
   "use server";
   const hashedUrl = buildFilename(url);
 
   try {
-    const archived = (await import(`../archive/${hashedUrl}.json`)) as Article;
-    const currentData = await articleExtractor(url);
-    if (!currentData) {
+    const archived = (await import(
+      `../archive/${hashedUrl}.json`
+    )) as ArticleData;
+    const current = await articleExtractor(url);
+    if (!current) {
       return null;
     }
-
-    const current = createArticle(currentData);
 
     const diffs = [];
     if (current.title !== archived.title) {
@@ -53,13 +56,13 @@ async function getArticleWithHtmlDiff(
         )
       );
     }
-    if (current.contentText !== archived.contentText) {
+    if (current.content !== archived.content) {
       diffs.push(
         createTwoFilesPatch(
           "Content",
           "Content",
-          archived.contentText ?? "",
-          current.contentText ?? ""
+          htmlToText(archived.content ?? ""),
+          htmlToText(current.content ?? "")
         )
       );
     }
