@@ -20,16 +20,21 @@ function buildFilename(url: string, outputLength = 40) {
 
 const htmlToText = compile({ wordwrap: 130 });
 
+async function tryFetchArticle(url: string) {
+  const hashedUrl = buildFilename(url);
+  const archived = (await import(
+    `../archive/${hashedUrl}.json`
+  )) as ArticleData;
+  return archived;
+}
+
 async function getArticleWithHtmlDiff(
   url: string
 ): Promise<[ArticleData, string] | null> {
   "use server";
-  const hashedUrl = buildFilename(url);
 
   try {
-    const archived = (await import(
-      `../archive/${hashedUrl}.json`
-    )) as ArticleData;
+    const archived = await tryFetchArticle(url);
     const current = await articleExtractor(url);
     if (!current) {
       return null;
@@ -81,27 +86,20 @@ async function getArticleWithHtmlDiff(
   }
 }
 
-function parseUrl(urlParts: string[]) {
-  return decodeURIComponent(urlParts.join("/")).replace(
-    /(https?:\/)([^/])/,
-    "$1/$2"
-  );
-}
-
 export default async function ArticlePage({
-  params,
+  searchParams,
 }: {
-  params: { urlParts: string[] };
+  searchParams: { url: string };
 }) {
-  if (!params.urlParts) {
+  if (!searchParams.url) {
     return <p>Debes proveer una URL para ver si hay historial de edición</p>;
   }
-  const url = parseUrl(params.urlParts);
-  const res = await getArticleWithHtmlDiff(url);
+  const res = await getArticleWithHtmlDiff(searchParams.url);
   if (res === null) {
     return (
       <p>
-        No existe el articulo con url <a href={url}>{url}</a>
+        No existe el articulo con url{" "}
+        <a href={searchParams.url}>{searchParams.url}</a>
       </p>
     );
   }
@@ -112,7 +110,7 @@ export default async function ArticlePage({
       <Suspense fallback={<div>Loading article...</div>}>
         {htmlDiff && (
           <>
-            <a href={url}>{current.title}</a>
+            <a href={searchParams.url}>{current.title}</a>
             <span dangerouslySetInnerHTML={{ __html: htmlDiff }}></span>
           </>
         )}
