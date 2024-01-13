@@ -22,12 +22,22 @@ jobs:
           feed_urls: "https://www.elpais.com.uy/rss/"
           destination_folder: "./app/archive"
 
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Stored new RSS entries from El Pais'
+
       - name: RSS La Diaria
         id: rss-la-diaria
         uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
+
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Stored new RSS entries from La Diaria'
 
       - name: RSS El Observador
         id: rss-el-observador
@@ -36,6 +46,11 @@ jobs:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Stored new RSS entries from El Observador'
+
       - name: RSS Semanario Brecha
         id: rss-semanario-brecha
         uses: nahuelhds/rss-entries-fetch-action@v0.1.2
@@ -43,12 +58,22 @@ jobs:
           feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
           destination_folder: "./app/archive"
 
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Stored new RSS entries from Semanario Brecha'
+
       - name: RSS Búsqueda
         id: rss-busqueda
         uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://www.busqueda.com.uy/anxml.aspx?13"
           destination_folder: "./app/archive"
+
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Stored new RSS entries from Búsqueda'
 
       - name: RSS Montevideo Portal
         id: rss-montevideo-portal
@@ -60,4 +85,4 @@ jobs:
       - name: Commit and push changes to repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: 'Stored new RSS entries'
+          commit_message: 'Stored new RSS entries from Montevideo Portal'
