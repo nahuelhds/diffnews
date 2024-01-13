@@ -16,35 +16,35 @@ jobs:
         uses: actions/checkout@v4
 
       - name: RSS El país
-        id: test-action
+        id: rss-el-pais
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://www.elpais.com.uy/rss/"
           destination_folder: "./app/archive"
 
       - name: RSS La Diaria
-        id: test-action
+        id: rss-la-diaria
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
       - name: RSS El Observador
-        id: test-action
+        id: rss-el-observador
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
       - name: RSS Semanario Brecha
-        id: test-action
+        id: rss-semanario-brecha
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "http://brecha.com.uy/feed/"
           destination_folder: "./app/archive"
 
       - name: RSS Montevideo Portal
-        id: test-action
+        id: rss-montevideo-portal
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
