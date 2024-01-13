@@ -42,14 +42,13 @@ function buildFilename(url: string, outputLength = 40) {
     .update(url)
     .digest("hex");
 }
+export function articleExists(article: Article) {
+  return fs.existsSync(getArticleFilename(article));
+}
 
 export function getArticleFilename(article: Article) {
   const hashedUrl = buildFilename(article.url);
   return `${ARCHIVE_FOLDER}/${hashedUrl}.json`;
-}
-
-export function articleExists(article: Article) {
-  return fs.existsSync(getArticleFilename(article));
 }
 
 export async function storeArticle(article: Article) {
