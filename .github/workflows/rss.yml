@@ -51,18 +51,6 @@ jobs:
         with:
           commit_message: 'Stored new RSS entries from El Observador'
 
-      - name: RSS Semanario Brecha
-        id: rss-semanario-brecha
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
-        with:
-          feed_urls: "http://brecha.com.uy/feed/"
-          destination_folder: "./app/archive"
-
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Stored new RSS entries from Semanario Brecha'
-
       - name: RSS Búsqueda
         id: rss-busqueda
         uses: nahuelhds/rss-entries-fetch-action@v0.2.0
@@ -86,3 +74,15 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: 'Stored new RSS entries from Montevideo Portal'
+
+      - name: RSS Semanario Brecha
+        id: rss-semanario-brecha
+        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        with:
+          feed_urls: "http://brecha.com.uy/feed/"
+          destination_folder: "./app/archive"
+
+      - name: Commit and push changes to repository
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 'Stored new RSS entries from Semanario Brecha'
