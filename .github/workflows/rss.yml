@@ -6,8 +6,8 @@ on:
     - cron: '*/15 * * * *'
 
 jobs:
-  rss-el-paisuy:
-    name: 'RSS El país'
+  rss-entries:
+    name: 'RSS Entries'
     runs-on: ubuntu-latest
 
     steps:
@@ -15,91 +15,35 @@ jobs:
         id: checkout
         uses: actions/checkout@v4
 
-      - name: RSS Entries
+      - name: RSS El país
         id: test-action
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://www.elpais.com.uy/rss/"
           destination_folder: "./app/archive"
 
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'RSS El País'
-
-  rss-la-diaria:
-    name: 'RSS La Diaria'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: RSS Entries
+      - name: RSS La Diaria
         id: test-action
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'RSS La Diaria'
-
-  rss-el-observador:
-    name: 'RSS El Observador'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: RSS Entries
+      - name: RSS El Observador
         id: test-action
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'RSS El Observador'
-
-  rss-semanario-brecha:
-    name: 'RSS Semanario Brecha'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: RSS Entries
+      - name: RSS Semanario Brecha
         id: test-action
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
           feed_urls: "http://brecha.com.uy/feed/"
           destination_folder: "./app/archive"
 
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'RSS Semanario Brecha'
-
-  rss-montevideo-portal:
-    name: 'RSS Montevideo Portal'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: RSS Entries
+      - name: RSS Montevideo Portal
         id: test-action
         uses: nahuelhds/rss-entries-fetch-action@v0.0.1
         with:
