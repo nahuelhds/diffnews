@@ -17,44 +17,44 @@ jobs:
 
       - name: RSS El país
         id: rss-el-pais
-        uses: nahuelhds/rss-entries-fetch-action@v0.1.1
+        uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://www.elpais.com.uy/rss/"
           destination_folder: "./app/archive"
 
       - name: RSS La Diaria
         id: rss-la-diaria
-        uses: nahuelhds/rss-entries-fetch-action@v0.1.1
+        uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
       - name: RSS El Observador
         id: rss-el-observador
-        uses: nahuelhds/rss-entries-fetch-action@v0.1.1
+        uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
 
       - name: RSS Semanario Brecha
         id: rss-semanario-brecha
-        uses: nahuelhds/rss-entries-fetch-action@v0.1.1
+        uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
           destination_folder: "./app/archive"
 
-      - name: RSS Montevideo Portal
-        id: rss-montevideo-portal
-        uses: nahuelhds/rss-entries-fetch-action@v0.1.1
-        with:
-          feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
-          destination_folder: "./app/archive"
-
       - name: RSS Búsqueda
         id: rss-busqueda
-        uses: nahuelhds/rss-entries-fetch-action@v0.1.1
+        uses: nahuelhds/rss-entries-fetch-action@v0.1.2
         with:
           feed_urls: "https://www.busqueda.com.uy/anxml.aspx?13"
+          destination_folder: "./app/archive"
+
+      - name: RSS Montevideo Portal
+        id: rss-montevideo-portal
+        uses: nahuelhds/rss-entries-fetch-action@v0.1.2
+        with:
+          feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
           destination_folder: "./app/archive"
 
       - name: Commit and push changes to repository
