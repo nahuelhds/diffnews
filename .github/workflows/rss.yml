@@ -43,7 +43,7 @@ jobs:
         id: rss-el-observador
         uses: nahuelhds/rss-entries-fetch-action@v0.2.0
         with:
-          feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
+          feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
           destination_folder: "./app/archive"
 
       - name: Commit and push changes to repository
@@ -55,7 +55,7 @@ jobs:
         id: rss-semanario-brecha
         uses: nahuelhds/rss-entries-fetch-action@v0.2.0
         with:
-          feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
+          feed_urls: "http://brecha.com.uy/feed/"
           destination_folder: "./app/archive"
 
       - name: Commit and push changes to repository
