@@ -50,6 +50,13 @@ jobs:
           feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
           destination_folder: "./app/archive"
 
+      - name: RSS Búsqueda
+        id: rss-busqueda
+        uses: nahuelhds/rss-entries-fetch-action@v0.0.1
+        with:
+          feed_urls: "https://www.busqueda.com.uy/anxml.aspx?13"
+          destination_folder: "./app/archive"
+
       - name: Commit and push changes to repository
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
