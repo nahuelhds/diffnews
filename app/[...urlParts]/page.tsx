@@ -14,7 +14,7 @@ function buildFilename(url: string, outputLength = 40) {
   return crypto
     .createHash("shake256", { outputLength })
     .update(url)
-    .digest("hex");
+    .digest("base64url");
 }
 
 async function getArticleWithHtmlDiff(
