@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: Store new RSS entries
 
 on:
   workflow_dispatch:
