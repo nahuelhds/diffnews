@@ -17,7 +17,7 @@ jobs:
 
       - name: RSS El país
         id: rss-el-pais
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        uses: nahuelhds/rss-entries-fetch-action@0.3.0
         with:
           feed_urls: "https://www.elpais.com.uy/rss/"
           destination_folder: "./app/archive"
@@ -29,7 +29,7 @@ jobs:
 
       - name: RSS La Diaria
         id: rss-la-diaria
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        uses: nahuelhds/rss-entries-fetch-action@0.3.0
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
           destination_folder: "./app/archive"
@@ -41,7 +41,7 @@ jobs:
 
       - name: RSS El Observador
         id: rss-el-observador
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        uses: nahuelhds/rss-entries-fetch-action@0.3.0
         with:
           feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
           destination_folder: "./app/archive"
@@ -53,7 +53,7 @@ jobs:
 
       - name: RSS Búsqueda
         id: rss-busqueda
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        uses: nahuelhds/rss-entries-fetch-action@0.3.0
         with:
           feed_urls: "https://www.busqueda.com.uy/anxml.aspx?13"
           destination_folder: "./app/archive"
@@ -65,7 +65,7 @@ jobs:
 
       - name: RSS Montevideo Portal
         id: rss-montevideo-portal
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        uses: nahuelhds/rss-entries-fetch-action@0.3.0
         with:
           feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
           destination_folder: "./app/archive"
@@ -77,7 +77,7 @@ jobs:
 
       - name: RSS Semanario Brecha
         id: rss-semanario-brecha
-        uses: nahuelhds/rss-entries-fetch-action@v0.2.0
+        uses: nahuelhds/rss-entries-fetch-action@0.3.0
         with:
           feed_urls: "http://brecha.com.uy/feed/"
           destination_folder: "./app/archive"
