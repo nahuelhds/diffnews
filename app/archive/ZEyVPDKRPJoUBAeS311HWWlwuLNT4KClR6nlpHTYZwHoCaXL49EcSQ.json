@@ -1,0 +1,18 @@
+{
+  "url": "https://www.montevideo.com.uy/Ciencia-y-Tecnologia/De-pura-casualidad-un-ingeniero-aleman-evito-un-posible-ciberataque-global-uc884842",
+  "title": "De pura casualidad, un ingeniero alemán evitó un posible ciberataque global",
+  "description": "El héroe del día                                    El profesional encontró de modo inesperado a un pirata informático que intentaba acceder a dispositivos en todo el...",
+  "links": [
+    "https://www.montevideo.com.uy/Ciencia-y-Tecnologia/De-pura-casualidad-un-ingeniero-aleman-evito-un-posible-ciberataque-global-uc884842",
+    "https://www.montevideo.com.uy/Ciencia-y-Tecnologia/De-pura-casualidad-un-ingeniero-aleman-evito-un-posible-ciberataque-global-uc884842?plantilla=1685&proceso=amp",
+    "https://www.montevideo.com.uy/auc.aspx?884842="
+  ],
+  "image": "https://imagenes.montevideo.com.uy/imgnoticias/201405/_W933_80/447306.jpg",
+  "content": "<div>\n                            <article>\n                               <div>\n                                    <p>El héroe del día</p>\n                                    <h2>El profesional encontró de modo inesperado a un pirata informático que intentaba acceder a dispositivos en todo el planeta.</h2>\n                                </div> \n                                <div>\n                              \t<p>Andres Freund, un\ningeniero alemán de Microsoft, notó por casualidad algo extraño en un software\nen el que había trabajado y descubrió que un pirata intentaba acceder a\ncomputadoras en todo el mundo, según relató recientemente en la red social de\nmicroblogueo Mastodon.</p><p>El ingeniero, de\n38 años y afincado en San Francisco (California), descubrió \"una puerta\ntrasera\" -término informático para nombrar a una entrada secreta que se\nemplea como control remoto para fines maliciosos- en un fragmento de software\nque forma parte del sistema operativo Linux.</p><p>Según los\nexpertos, esta puerta trasera podría haber dado paso a un importante ataque\ncibernético que, de haberse concretado, acarrearía importantes daños.</p><p>Tras su hallazgo,\nla Agencia de Seguridad de Infraestructura y Ciberseguridad (CISA) advirtió que\nla puerta trasera (CVE-2024-3094) está presente en las versiones 5.6.0 y 5.6.1\nde una herramienta de datos llamada XZ Utils, y recomendó que hasta que se solucione,\nlos usuarios y desarrolladores usen una versión anterior.</p><p>Linux es uno de\nsistemas operativos de código abierto más importante del mundo, y lo utilizan\nla gran mayoría de los servidores del mundo de bancos, hospitales, empresas y\nGobiernos.</p><p>La hazaña del\ningeniero fue alabada por el director ejecutivo de Microsoft, Satya Nadella,\nquien destacó en sus redes sociales que \"Andres Freund, con su curiosidad\ny destreza, fue capaz de ayudarnos a todos\".</p><p>\"La\nseguridad es un deporte de equipo y esta es la cultura que necesitamos en todas\npartes\", anotó Nadella.</p><p>No se sabe quién\ncreó la puerta trasera y el respaldo con el que contó, pero, según The New York\nTimes, el plan era tan elaborado que algunos investigadores están convencidos\nde que solo podría haberlo intentado una nación con habilidades tremendas para concebir\nataques cibernéticos, como Rusia o China.</p><p>EFE</p>\n                                </div> \n                             <br />\n                            </article> \n                            <br />\n                        </div>",
+  "author": "@portalmvd",
+  "favicon": "https://www.montevideo.com.uy/favicon/favicon.ico",
+  "source": "montevideo.com.uy",
+  "published": "",
+  "ttr": 62,
+  "type": "article"
+}
