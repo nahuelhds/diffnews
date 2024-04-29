@@ -1,0 +1,18 @@
+{
+  "url": "https://www.montevideo.com.uy/Ciencia-y-Tecnologia/Microsoft-hizo-el-sistema-operativo-DOS-4-0-de-codigo-abierto-pero-hay-descontentos-uc886856",
+  "title": "Microsoft hizo el sistema operativo DOS 4.0 de código abierto, pero hay descontentos",
+  "description": "Para todos                                    El público no se mostró muy entusiasmado con la forma en que la empresa publicó los datos de la versión...",
+  "links": [
+    "https://www.montevideo.com.uy/Ciencia-y-Tecnologia/Microsoft-hizo-el-sistema-operativo-DOS-4-0-de-codigo-abierto-pero-hay-descontentos-uc886856",
+    "https://www.montevideo.com.uy/Ciencia-y-Tecnologia/Microsoft-hizo-el-sistema-operativo-DOS-4-0-de-codigo-abierto-pero-hay-descontentos-uc886856?plantilla=1685&proceso=amp",
+    "https://www.montevideo.com.uy/auc.aspx?886856="
+  ],
+  "image": "https://imagenes.montevideo.com.uy/imgnoticias/202404/_W933_80/879710.jpg",
+  "content": "<div>\n                            <article>\n                               <div>\n                                    <p>Para todos</p>\n                                    <h2>El público no se mostró muy entusiasmado con la forma en que la empresa publicó los datos de la versión actualizada.</h2>\n                                </div> \n                                <div>\n                              \t<p>El\nsistema operativo DOS de Microsoft e IBM es un hito importante en la historia\nde la informática personal, y es igualmente importante que se pueda profundizar\nen él y ver cómo funciona. Esa es parte de la razón por la que ambas compañías\nhan publicado el código fuente de ciertas versiones, incluidas MS-DOS 1.25,\n2.11 y, a partir de ahora, 4.0, según consignó el portal <em>PCWorld</em>.</p><p>Microsoft\ne IBM publicaron el código actualizado bajo la licencia MIT de código abierto a\nprincipios de este mes. Microsoft dijo que se trata del “espíritu de innovación\nabierta”, pero no todos están entusiasmados con la manera precisa en que se\nabrió la versión actualizada de DOS.</p><p>Michal\nNecasek, ingeniero de software e historiador, ha documentado algunos de los\nproblemas en el blog <em>os2museum</em>. El proceso ha dejado el código, en\npalabras de Necasek, “mutilado”.</p><p>El mayor\nproblema parece ser el hecho de que Microsoft publicó el código fuente como\narchivos git, no como archivos binarios originales, indicó el mencionado medio.\nConvertir los datos relativamente antiguos a un formato de texto más\nampliamente compatible con los editores de código modernos es quizás un impulso\nnatural, pero también significa que las herramientas de software y hardware\nreales diseñadas para el sistema operativo original no pueden manejarlo.</p><p>Seguramente\nno ayuda que los archivos git también carezcan de marcas de tiempo, lo cual\n(según los comentarios sobre la historia y recogidos por <em>Tom’s Hardware</em>)\nson una cuestión de política de protección de datos.</p><p>El código\nen sí también podría ser el MS-DOS 4.01 actualizado apresuradamente, no la\nversión verdaderamente original. Es posible que algunos de estos problemas se\nresuelvan, ya que Microsoft podría simplemente publicar los archivos originales\nen su formato original, pero esa no es una alta prioridad.</p>\n                                </div> \n                             <br />\n                            </article> \n                            <br />\n                        </div>",
+  "author": "@portalmvd",
+  "favicon": "https://www.montevideo.com.uy/favicon/favicon.ico",
+  "source": "montevideo.com.uy",
+  "published": "",
+  "ttr": 63,
+  "type": "article"
+}
