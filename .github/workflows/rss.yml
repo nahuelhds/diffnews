@@ -17,6 +17,7 @@ jobs:
 
       - name: RSS El país
         id: rss-el-pais
+        continue-on-error: true
         uses: nahuelhds/rss-entries-fetch-action@v0.3.0
         with:
           feed_urls: "https://www.elpais.com.uy/rss/"
@@ -29,6 +30,7 @@ jobs:
 
       - name: RSS La Diaria
         id: rss-la-diaria
+        continue-on-error: true
         uses: nahuelhds/rss-entries-fetch-action@v0.3.0
         with:
           feed_urls: "https://ladiaria.com.uy/feeds/articulos/"
@@ -39,20 +41,22 @@ jobs:
         with:
           commit_message: 'Stored new RSS entries from La Diaria'
 
-      - name: RSS El Observador
-        id: rss-el-observador
-        uses: nahuelhds/rss-entries-fetch-action@v0.3.0
-        with:
-          feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
-          destination_folder: "./app/archive"
-
-      - name: Commit and push changes to repository
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: 'Stored new RSS entries from El Observador'
+#      - name: RSS El Observador
+#        id: rss-el-observador
+#        continue-on-error: true
+#        uses: nahuelhds/rss-entries-fetch-action@v0.3.0
+#        with:
+#          feed_urls: "https://www.elobservador.com.uy/rss/elobservador.xml"
+#          destination_folder: "./app/archive"
+#
+#      - name: Commit and push changes to repository
+#        uses: stefanzweifel/git-auto-commit-action@v4
+#        with:
+#          commit_message: 'Stored new RSS entries from El Observador'
 
       - name: RSS Búsqueda
         id: rss-busqueda
+        continue-on-error: true
         uses: nahuelhds/rss-entries-fetch-action@v0.3.0
         with:
           feed_urls: "https://www.busqueda.com.uy/anxml.aspx?13"
@@ -65,6 +69,7 @@ jobs:
 
       - name: RSS Montevideo Portal
         id: rss-montevideo-portal
+        continue-on-error: true
         uses: nahuelhds/rss-entries-fetch-action@v0.3.0
         with:
           feed_urls: "https://www.montevideo.com.uy/anxml.aspx?58"
@@ -77,6 +82,7 @@ jobs:
 
       - name: RSS Semanario Brecha
         id: rss-semanario-brecha
+        continue-on-error: true
         uses: nahuelhds/rss-entries-fetch-action@v0.3.0
         with:
           feed_urls: "http://brecha.com.uy/feed/"
