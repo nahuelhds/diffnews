@@ -1,0 +1,16 @@
+{
+  "url": "https://www.elpais.com.uy/narrativas-visuales/calculadora-de-balotaje-reparti-los-votos-de-los-otros-partidos-y-proyecta-quien-puede-ser-el-ganador",
+  "title": "Calculadora de balotaje: repartí los votos de los otros partidos y proyectá si gana Orsi o Delgado en segunda vuelta",
+  "description": "Yamandú Orsi y Álvaro Delgado se enfrentarán el próximo 24 de noviembre en la segunda vuelta de las elecciones nacionales. En este simulador, podés adjudicarle a cada candidato los votos de los otros partidos para pronosticar quién podría ser el próximo presidente.",
+  "links": [
+    "https://www.elpais.com.uy/narrativas-visuales/calculadora-de-balotaje-reparti-los-votos-de-los-otros-partidos-y-proyecta-quien-puede-ser-el-ganador"
+  ],
+  "image": "https://imgs.elpais.com.uy/dims4/default/3f2a200/2147483647/strip/true/crop/1332x648+0+24/resize/1440x700!/quality/90/?url=https%3A%2F%2Fel-pais-uruguay-production-web.s3.us-east-1.amazonaws.com%2Fbrightspot%2F17%2Fa7%2Fc50c773d466d9aacefccd0074983%2Fcalculadora.png",
+  "content": "<div><p>El simulador está hecho en base a los porcentajes del escrutinio primario de la Corte Electoral, con un 99,92% de los circuitos escrutados. Los porcentajes de cada partido son calculados sobre el total de votos emitidos menos los observados, que serán relevados en el escrutinio departamental. A su vez, se pueden agregar las abstenciones, es decir, aquellas personas que estaban habilitadas para votar en estas elecciones nacionales y no lo hicieron, pero que podrían hacerlo en segunda vuelta. </p><p>Hay dos formas de proyectar: una es repartiendo los votos de todos los otros partidos, los blancos y anulados y sumándole los que no votaron. La otra forma es dejar sin repartir algunas opciones y proyectar en función de ese total. Por ejemplo, si creés que los votos de Identidad Soberana serán en blanco, podés no asignarlos y en ese caso la proyección no los tomará en cuenta. </p><p>En el balotaje solo computan los votos válidos, es decir, que quedan afuera los votos en blanco y los anulados. A diferencia de las elecciones nacionales, el candidato que más votos obtiene será electo presidente. Es por eso que al proyectar en esta calculadora, los porcentajes se calculan sobre el total de votos que asignes.</p><p><i>Este simulador fue realizado en base a un modelo similar desarrollado por La Nación de Argentina para las elecciones de 2023.</i></p></div>",
+  "author": "https://www.elpais.com.uy/autor/florencia-traibel",
+  "favicon": "https://www.elpais.com.uy/favicon-16x16.png",
+  "source": "elpais.com.uy",
+  "published": "2024-10-28T17:31:16.513",
+  "ttr": 45,
+  "type": "article"
+}
